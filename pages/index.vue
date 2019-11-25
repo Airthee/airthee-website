@@ -1,15 +1,15 @@
 <template>
   <div>
-    <section id="section-header" ref="headerSection" class="hero is-primary is-fullheight">
-      <div class="hero-body">
-        <div ref="headerContainer" class="container">
-          <h1 id="whoami" class="title is-1 display-fade">
+    <section id="section-header" class="hero is-primary is-fullheight">
+      <div ref="headerHeroBody" class="hero-body">
+        <div class="container">
+          <h1 id="whoami" ref="headerTitle" class="title is-1 display-fade">
             $ whoami
           </h1>
           <figure ref="headerFigureImage" class="image display-fade">
             <img class="is-rounded" src="@/assets/images/me.jpg" alt="Photo of me at Brooklin Bridge">
           </figure>
-          <article class="message display-fade">
+          <article ref="headerCitation" class="message display-fade">
             <div class="message-body">
               <blockquote>
                 {{ selectedCitation.text }}
@@ -141,7 +141,11 @@ export default {
     })
 
     // Resize image
-    this.$refs.headerFigureImage.style.width = (this.$refs.headerSection.offsetHeight - this.$refs.headerContainer.offsetHeight).toString().concat('px')
+    const computedStyle = name => window.getComputedStyle(this.$refs[name])
+    const heroBodyHeight = `calc(${computedStyle('headerHeroBody').height} - ${computedStyle('headerHeroBody').paddingTop} - ${computedStyle('headerHeroBody').paddingBottom})`
+    const titleHeight = computedStyle('headerTitle').height
+    const citationsHeight = computedStyle('headerCitation').height
+    this.$refs.headerFigureImage.style.width = `calc(${heroBodyHeight} - ${titleHeight} - ${citationsHeight})`
 
     // Pick a citation randomly every 10 second
     setInterval(() => { this.selectedCitation = this.randomCitation() }, 10000)
@@ -204,8 +208,8 @@ export default {
   #section-header {
     figure.image {
       margin: auto;
-      margin-bottom: 1rem;
-      width: 50%;
+      padding-bottom: 1rem;
+      width: 0px;
     }
   }
 
