@@ -17,24 +17,18 @@
             </blockquote>
           </div>
         </article>
-        <div class="scroll-down">
-          <span class="icon">
-            <a href="#whoami">
-              <i class="fas fa-chevron-circle-down fa-2x" />
-            </a>
-          </span>
-        </div>
+        <scroll-to target="#whoami" />
       </div>
     </header>
-    <h1 id="whoami" class="title is-1" data-aos="fade-down">
+    <h1 id="whoami" class="title is-1" :data-aos="randomAOSAnimation()">
       $ whoami
     </h1>
     <section class="section--block">
       <div class="section--block--container">
-        <h3 class="subtitle is-3" data-aos="fade-up">
+        <h3 class="subtitle is-3" :data-aos="randomAOSAnimation()">
           Informations
         </h3>
-        <div class="box" data-aos="zoom-in-left">
+        <div class="box" :data-aos="randomAOSAnimation()">
           <p class="content">
             <ul>
               <li v-for="(information, i) in informations" :key="i">
@@ -44,18 +38,19 @@
           </p>
         </div>
       </div>
+      <scroll-to target="#section-skills" />
     </section>
 
-    <section class="section--block">
+    <section id="section-skills" class="section--block">
       <div class="section--block--container">
         <h3 class="subtitle is-3">
           Skills
         </h3>
-        <div v-for="(skillCategory, i) in skills" :key="i" :data-aos="`fade-${i % 2 == 0 ? 'right': 'left'}`">
+        <div v-for="(skillCategory, i) in skills" :key="i" :data-aos="randomAOSAnimation()">
           <h4 class="subtitle is-4">
             {{ skillCategory.category }}
           </h4>
-          <div v-for="(skill, j) in skillCategory.skills" :key="j" class="skills-card--container" data-aos="flip-up">
+          <div v-for="(skill, j) in skillCategory.skills" :key="j" class="skills-card--container" :data-aos="randomAOSAnimation()">
             <div class="card">
               <header class="card-header">
                 <p class="card-header-title">
@@ -150,6 +145,45 @@ export default {
     AOS.init({
       duration: 1200
     })
+  },
+  methods: {
+    randomAOSAnimation (type) {
+      const animations = {
+        fade: [
+          'fade-up',
+          'fade-down',
+          'fade-right',
+          'fade-left',
+          'fade-up-right',
+          'fade-up-left',
+          'fade-down-right',
+          'fade-down-left'
+        ],
+        flip: [
+          'flip-left',
+          'flip-right',
+          'flip-up',
+          'flip-down'
+        ],
+        zoom: [
+          'zoom-in',
+          'zoom-in-up',
+          'zoom-in-down',
+          'zoom-in-left',
+          'zoom-in-right',
+          'zoom-out',
+          'zoom-out-up',
+          'zoom-out-down',
+          'zoom-out-left',
+          'zoom-out-right'
+        ]
+      }
+
+      if (type === undefined) {
+        type = Object.keys(animations)[Math.floor(Math.random() * Object.keys(animations).length)]
+      }
+      return animations[type][Math.floor(Math.random() * animations[type].length)]
+    }
   }
 }
 </script>
