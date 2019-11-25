@@ -2,10 +2,13 @@
   <div>
     <header id="profile-picture--container" ref="profilePictureContainer">
       <div>
-        <figure class="image is-256x256">
+        <h1 id="whoami" class="title is-1 display-fade">
+          $ whoami
+        </h1>
+        <figure class="image display-fade">
           <img class="is-rounded" src="@/assets/images/me.jpg" alt="Photo of me at Brooklin Bridge">
         </figure>
-        <article class="message">
+        <article class="message display-fade">
           <div class="message-body">
             <blockquote>
               {{ selectedCitation.text }}
@@ -20,10 +23,8 @@
         <!-- <scroll-to target="#whoami" /> -->
       </div>
     </header>
-    <h1 id="whoami" class="title is-1" :data-aos="randomAOSAnimation()">
-      $ whoami
-    </h1>
-    <section class="section--block">
+
+    <section id="section-informations" class="section--block">
       <div class="section--block--container">
         <h3 class="subtitle is-3" :data-aos="randomAOSAnimation()">
           Informations
@@ -43,32 +44,44 @@
 
     <section id="section-skills" class="section--block">
       <div class="section--block--container">
-        <h3 class="subtitle is-3">
+        <h3 class="subtitle is-3" :data-aos="randomAOSAnimation()">
           Skills
         </h3>
-        <div v-for="(skillCategory, i) in skills" :key="i" :data-aos="randomAOSAnimation()">
-          <h4 class="subtitle is-4">
-            {{ skillCategory.category }}
-          </h4>
-          <div v-for="(skill, j) in skillCategory.skills" :key="j" class="skills-card--container" :data-aos="randomAOSAnimation()">
-            <div class="card">
-              <header class="card-header">
-                <p class="card-header-title">
-                  {{ skill.name }}
-                </p>
-              </header>
-              <div class="card-content">
-                <div class="content">
-                  <progress class="progress is-primary" :value="skill.value" max="100">
-                    {{ skill.value }}%
-                  </progress>
-                </div>
+        <div v-for="(skill, i) in skills" :key="i" class="skills-card--container" :data-aos="randomAOSAnimation()">
+          <div class="card">
+            <header class="card-header">
+              <p class="card-header-title">
+                {{ skill.name }}
+              </p>
+            </header>
+            <div class="card-content">
+              <div class="content">
+                <progress class="progress is-primary" :value="skill.value" max="100">
+                  {{ skill.value }}%
+                </progress>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <section id="section-socials" class="section--block">
+      <div class="section--block--container">
+        <h3 class="subtitle is-3" :data-aos="randomAOSAnimation()">
+          Social networks
+        </h3>
+        <div class="socials--container">
+          <a v-for="(network, i) in socialNetworks" :key="i" :href="network.link" target="_blank" :data-aos="randomAOSAnimation()">
+            <img :src="network.img" :alt="network.imgAlt" class="social-img" :title="network.name">
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Contact : <a href="mailto:contact@airthee.com">contact (at) airthee.com</a>
+    </footer>
   </div>
 </template>
 
@@ -82,84 +95,41 @@ export default {
   //   ScrollTo
   // },
   data () {
-    const now = new Date()
-    const birthDay = new Date(1996, 7, 17)
-    const diff = parseInt((now - birthDay) / (60 * 60 * 24 * 365 * 1000))
-
-    return {
-      informations: [
-        'Raphaël TISON (@Airthee)',
-        `${birthDay.getDate().toString().padStart(2, '0')}/${(birthDay.getMonth() + 1).toString().padStart(2, '0')}/${birthDay.getFullYear()} (${diff} years old)`,
-        'Vendée, France'
-      ],
-      skills: [
-        {
-          category: 'Programming',
-          skills: [
-            {
-              name: 'VueJS',
-              value: 60
-            },
-            {
-              name: 'PHP',
-              value: 90
-            },
-            {
-              name: 'NodeJS',
-              value: 70
-            },
-            {
-              name: 'SQL',
-              value: 70
-            },
-            {
-              name: 'Python',
-              value: 30
-            },
-            {
-              name: 'Java',
-              value: 30
-            },
-            {
-              name: 'C / C++',
-              value: 30
-            },
-            {
-              name: 'HTML / CSS',
-              value: 80
-            }
-          ]
-        }
-      ],
+    // Add static data to component data
+    return Object.assign({
       selectedCitation: null
-    }
+    }, require('./index.data.json'))
   },
   created () {
+    // Select a citation randomly
     this.selectedCitation = this.randomCitation()
   },
   mounted () {
+    // Dynamic height for profil container
+    // Needs to fit all the window
     const profilePictureContainer = this.$refs.profilePictureContainer
-    profilePictureContainer.style.height = `calc(100vh - ${profilePictureContainer.offsetTop}px` // window.innerHeight - profilePictureContainer.offsetTop
+    profilePictureContainer.style.height = `calc(100vh - ${profilePictureContainer.offsetParent.offsetTop}px)` // window.innerHeight - profilePictureContainer.offsetTop
+    profilePictureContainer.style.paddingBottom = `${profilePictureContainer.offsetParent.offsetTop}px` // window.innerHeight - profilePictureContainer.offsetTop
+
+    // AOS initialisation
     AOS.init({
       duration: 1200
     })
 
+    // Pick a citation randomly every 10 second
     setInterval(() => { this.selectedCitation = this.randomCitation() }, 10000)
   },
   methods: {
+    /**
+     * Method picking a citation randomly
+     */
     randomCitation () {
-      const citations = [
-        {
-          text: 'Un objectif n’est pas toujours censé être atteint, il sert surtout de direction, de moteur, et d’accélérateur.',
-          author: '- Bruce Lee'
-        },
-        {
-          text: 'La seule façon de faire du bon travail est d’aimer ce que vous faites. Si vous n’avez pas encore trouvé, continuez à chercher.',
-          author: '- Steve Jobs'
-        }
-      ]
-      return citations[Math.floor(Math.random() * citations.length)]
+      return this.citations[Math.floor(Math.random() * this.citations.length)]
     },
+
+    /**
+     * Method picking a random AOS class
+     */
     randomAOSAnimation (type) {
       const animations = {
         fade: [
@@ -192,6 +162,8 @@ export default {
         ]
       }
 
+      // If a type is specified, select a class for this type
+      // else, select a random type
       if (type === undefined) {
         type = Object.keys(animations)[Math.floor(Math.random() * Object.keys(animations).length)]
       }
@@ -218,6 +190,8 @@ export default {
     figure.image {
       margin: auto;
       margin-bottom: 1rem;
+      width: 45vw;
+      height: auto;
     }
   }
 
@@ -227,16 +201,44 @@ export default {
     padding: 10px;
   }
 
+  .socials--container {
+    display: inline-block;
+    text-align: center;
+
+    a {
+      padding: 10px;
+      .social-img {
+        width: auto;
+        height: 60px;
+      }
+    }
+  }
+
   .section--block {
-    height: 75vh;
+    height: 100vh;
     position: relative;
 
-    // .section--block--container {
-    //   position: absolute;
-    //   top: 50%;
-    //   left: 50%;
-    //   transform: translate(-50%, -50%);
-    //   width: 100%;
-    // }
+    .section--block--container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+    }
+  }
+
+  .display-fade {
+    animation-duration: 7s;
+    animation-name: displayFade;
+  }
+
+  @keyframes displayFade {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
   }
 </style>
