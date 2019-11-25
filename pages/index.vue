@@ -3,10 +3,7 @@
     <section id="section-header" class="hero is-primary is-fullheight">
       <div ref="headerHeroBody" class="hero-body">
         <div class="container">
-          <h1 id="whoami" ref="headerTitle" class="title is-1 display-fade">
-            $ whoami
-          </h1>
-          <figure ref="headerFigureImage" class="image display-fade">
+          <figure ref="headerFigureImage" class="image display-fade is-512x512">
             <img class="is-rounded" src="@/assets/images/me.jpg" alt="Photo of me at Brooklin Bridge">
           </figure>
           <article ref="headerCitation" class="message display-fade">
@@ -29,7 +26,7 @@
       <div class="hero-body">
         <div class="container">
           <h3 class="subtitle is-3" :data-aos="randomAOSAnimation()">
-            Informations
+            $ whoami
           </h3>
           <div class="box" :data-aos="randomAOSAnimation()">
             <p class="content">
@@ -140,13 +137,6 @@ export default {
       duration: 1200
     })
 
-    // Resize image
-    const computedStyle = name => window.getComputedStyle(this.$refs[name])
-    const heroBodyHeight = `calc(${computedStyle('headerHeroBody').height} - ${computedStyle('headerHeroBody').paddingTop} - ${computedStyle('headerHeroBody').paddingBottom})`
-    const titleHeight = computedStyle('headerTitle').height
-    const citationsHeight = computedStyle('headerCitation').height
-    this.$refs.headerFigureImage.style.width = `calc(${heroBodyHeight} - ${titleHeight} - ${citationsHeight})`
-
     // Pick a citation randomly every 10 second
     setInterval(() => { this.selectedCitation = this.randomCitation() }, 10000)
   },
@@ -208,8 +198,7 @@ export default {
   #section-header {
     figure.image {
       margin: auto;
-      padding-bottom: 1rem;
-      width: 0px;
+      margin-bottom: 1rem;
     }
   }
 
