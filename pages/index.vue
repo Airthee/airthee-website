@@ -1,12 +1,12 @@
 <template>
   <div>
-    <section id="section-header" class="hero is-primary is-fullheight">
+    <section id="section-header" ref="headerSection" class="hero is-primary is-fullheight">
       <div class="hero-body">
-        <div class="container">
+        <div ref="headerContainer" class="container">
           <h1 id="whoami" class="title is-1 display-fade">
             $ whoami
           </h1>
-          <figure class="image display-fade">
+          <figure ref="headerFigureImage" class="image display-fade">
             <img class="is-rounded" src="@/assets/images/me.jpg" alt="Photo of me at Brooklin Bridge">
           </figure>
           <article class="message display-fade">
@@ -139,6 +139,9 @@ export default {
     AOS.init({
       duration: 1200
     })
+
+    // Resize image
+    this.$refs.headerFigureImage.style.width = (this.$refs.headerSection.offsetHeight - this.$refs.headerContainer.offsetHeight).toString().concat('px')
 
     // Pick a citation randomly every 10 second
     setInterval(() => { this.selectedCitation = this.randomCitation() }, 10000)
