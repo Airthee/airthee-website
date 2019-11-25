@@ -27,43 +27,51 @@
     <h1 class="title is-1" data-aos="fade-down">
       $ whoami
     </h1>
-    <h3 class="subtitle is-3" data-aos="fade-up">
-      Informations
-    </h3>
-    <div class="box" data-aos="zoom-in-left">
-      <p class="content">
-        <ul>
-          <li v-for="(information, i) in informations" :key="i">
-            {{ information }}
-          </li>
-        </ul>
-      </p>
-    </div>
+    <section class="section--block">
+      <div class="section--block--container">
+        <h3 class="subtitle is-3" data-aos="fade-up">
+          Informations
+        </h3>
+        <div class="box" data-aos="zoom-in-left">
+          <p class="content">
+            <ul>
+              <li v-for="(information, i) in informations" :key="i">
+                {{ information }}
+              </li>
+            </ul>
+          </p>
+        </div>
+      </div>
+    </section>
 
-    <h3 class="subtitle is-3">
-      Skills
-    </h3>
-    <div v-for="(skillCategory, i) in skills" :key="i" :data-aos="`fade-${i % 2 == 0 ? 'right': 'left'}`">
-      <h4 class="subtitle is-4">
-        {{ skillCategory.category }}
-      </h4>
-      <div v-for="(skill, j) in skillCategory.skills" :key="j" class="skills-card--container" data-aos="flip-up">
-        <div class="card">
-          <header class="card-header">
-            <p class="card-header-title">
-              {{ skill.name }}
-            </p>
-          </header>
-          <div class="card-content">
-            <div class="content">
-              <progress class="progress is-primary" :value="skill.value" max="100">
-                {{ skill.value }}%
-              </progress>
+    <section class="section--block">
+      <div class="section--block--container">
+        <h3 class="subtitle is-3">
+          Skills
+        </h3>
+        <div v-for="(skillCategory, i) in skills" :key="i" :data-aos="`fade-${i % 2 == 0 ? 'right': 'left'}`">
+          <h4 class="subtitle is-4">
+            {{ skillCategory.category }}
+          </h4>
+          <div v-for="(skill, j) in skillCategory.skills" :key="j" class="skills-card--container" data-aos="flip-up">
+            <div class="card">
+              <header class="card-header">
+                <p class="card-header-title">
+                  {{ skill.name }}
+                </p>
+              </header>
+              <div class="card-content">
+                <div class="content">
+                  <progress class="progress is-primary" :value="skill.value" max="100">
+                    {{ skill.value }}%
+                  </progress>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 
@@ -168,5 +176,18 @@ export default {
     width: 25%;
     display: inline-block;
     padding: 10px;
+  }
+
+  .section--block {
+    height: 75vh;
+    position: relative;
+
+    // .section--block--container {
+    //   position: absolute;
+    //   top: 50%;
+    //   left: 50%;
+    //   transform: translate(-50%, -50%);
+    //   width: 100%;
+    // }
   }
 </style>
