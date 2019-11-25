@@ -1,7 +1,7 @@
 <template>
   <div :class="`scroll-${direction}`">
     <span class="icon">
-      <a href="#" :v-scroll-to="`'${target}'`">
+      <a :href="target">
         <i class="fas fa-chevron-circle-down fa-2x" />
       </a>
     </span>

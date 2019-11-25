@@ -17,7 +17,7 @@
             </blockquote>
           </div>
         </article>
-        <scroll-to target="#whoami" />
+        <!-- <scroll-to target="#whoami" /> -->
       </div>
     </header>
     <h1 id="whoami" class="title is-1" :data-aos="randomAOSAnimation()">
@@ -38,7 +38,7 @@
           </p>
         </div>
       </div>
-      <scroll-to target="#section-skills" />
+      <!-- <scroll-to target="#section-skills" /> -->
     </section>
 
     <section id="section-skills" class="section--block">
@@ -74,9 +74,13 @@
 
 <script>
 import AOS from 'aos'
+// import ScrollTo from '@/components/ScrollTo'
 import 'aos/dist/aos.css'
 
 export default {
+  // components: {
+  //   ScrollTo
+  // },
   data () {
     const now = new Date()
     const birthDay = new Date(1996, 7, 17)
@@ -127,17 +131,11 @@ export default {
           ]
         }
       ],
-      citations: [
-        {
-          text: 'Un objectif n’est pas toujours censé être atteint, il sert surtout de direction, de moteur, et d’accélérateur.',
-          author: '- Bruce Lee'
-        }
-      ],
       selectedCitation: null
     }
   },
   created () {
-    this.selectedCitation = this.citations[Math.floor(Math.random() * this.citations.length)]
+    this.selectedCitation = this.randomCitation()
   },
   mounted () {
     const profilePictureContainer = this.$refs.profilePictureContainer
@@ -145,8 +143,23 @@ export default {
     AOS.init({
       duration: 1200
     })
+
+    setInterval(() => { this.selectedCitation = this.randomCitation() }, 10000)
   },
   methods: {
+    randomCitation () {
+      const citations = [
+        {
+          text: 'Un objectif n’est pas toujours censé être atteint, il sert surtout de direction, de moteur, et d’accélérateur.',
+          author: '- Bruce Lee'
+        },
+        {
+          text: 'La seule façon de faire du bon travail est d’aimer ce que vous faites. Si vous n’avez pas encore trouvé, continuez à chercher.',
+          author: '- Steve Jobs'
+        }
+      ]
+      return citations[Math.floor(Math.random() * citations.length)]
+    },
     randomAOSAnimation (type) {
       const animations = {
         fade: [
