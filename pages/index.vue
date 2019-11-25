@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="hero is-primary is-fullheight" id="section-header">
+    <section id="section-header" class="hero is-primary is-fullheight">
       <div class="hero-body">
         <div class="container">
           <h1 id="whoami" class="title is-1 display-fade">
@@ -25,7 +25,7 @@
       </div>
     </section>
 
-    <section class="hero is-default is-fullheight" id="section-informations">
+    <section id="section-informations" class="hero is-default is-fullheight">
       <div class="hero-body">
         <div class="container">
           <h3 class="subtitle is-3" :data-aos="randomAOSAnimation()">
@@ -45,7 +45,34 @@
       <!-- <scroll-to target="#section-skills" /> -->
     </section>
 
-    <section class="hero is-default is-fullheight" id="section-skills">
+    <section id="section-education" class="hero is-default is-fullheight">
+      <div class="hero-body">
+        <div class="container">
+          <h3 class="subtitle is-3" :data-aos="randomAOSAnimation()">
+            Education
+          </h3>
+          <div v-for="(formation, i) in education" :key="i" :data-aos="randomAOSAnimation()">
+            <div class="card">
+              <header class="card-header">
+                <p class="card-header-title">
+                  {{ formation.description }}
+                </p>
+              </header>
+              <div class="card-content">
+                <div class="content">
+                  <div>{{ formation.location }}</div>
+                  <div>{{ formation.school }}</div>
+                  <div>{{ formation.year }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <scroll-to target="#section-skills" /> -->
+    </section>
+
+    <section id="section-skills" class="hero is-default is-fullheight">
       <div class="hero-body">
         <div class="container">
           <h3 class="subtitle is-3" :data-aos="randomAOSAnimation()">
@@ -71,7 +98,7 @@
       </div>
     </section>
 
-    <section class="hero is-default is-fullheight" id="section-socials">
+    <section id="section-socials" class="hero is-default is-fullheight">
       <div class="hero-body">
         <div class="container">
           <h3 class="subtitle is-3" :data-aos="randomAOSAnimation()">
@@ -108,7 +135,6 @@ export default {
     this.selectedCitation = this.randomCitation()
   },
   mounted () {
-
     // AOS initialisation
     AOS.init({
       duration: 1200
@@ -176,7 +202,13 @@ export default {
     figure.image {
       margin: auto;
       margin-bottom: 1rem;
-      width: 45vw;
+      width: 50%;
+    }
+  }
+
+  #section-education {
+    .card {
+      margin-bottom: 10px;
     }
   }
 

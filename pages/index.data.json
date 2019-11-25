@@ -54,6 +54,32 @@
       "value": 80
     }
   ],
+  "education": [
+    {
+      "school": "EPSI",
+      "location": "Nantes, 44200, France",
+      "description": "RNCP 1 - Expert en informatique & système d’information",
+      "year": "2018 - Today"
+    },
+    {
+      "school": "IUT",
+      "location": "La Roche sur Yon, 85000, France",
+      "description": "Licence Professionnelle DIP",
+      "year": "2017 - 2018"
+    },
+    {
+      "school": "Lycée Jean de Lattre De Tassigny",
+      "location": "La Roche sur Yon, 85000, France",
+      "description": "BTS Systèmes Numériques",
+      "year": "2015 - 2017"
+    },
+    {
+      "school": "Lycée Jean de Lattre De Tassigny",
+      "location": "La Roche sur Yon, 85000, France",
+      "description": "BAC STI2D",
+      "year": "2013 - 2015"
+    }
+  ],
   "socialNetworks": [
     {
       "name": "Github",
@@ -82,6 +108,18 @@
     {
       "text": "La seule façon de faire du bon travail est d’aimer ce que vous faites. Si vous n’avez pas encore trouvé, continuez à chercher.",
       "author": "- Steve Jobs"
+    },
+    {
+      "text": "Croire en soi est la première étape pour atteindre un objectif. Si vous pensez que vous allez échouer, vous le ferez probablement.",
+      "author": "- Will Smith"
+    },
+    {
+      "text": "Si vous voulez mener une vie heureuse, associez-la à un objectif, et non à des personnes ou à des objets.",
+      "author": "- Albert Einstein"
+    },
+    {
+      "text": "L'échec est le fondement de la réussite.",
+      "author": "- Lao Tseu"
     }
   ]
 }
