@@ -13,6 +13,9 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script: [
+      { src: 'https://kit.fontawesome.com/b99c705c2e.js', crossorigin: 'anonymous' }
     ]
   },
   /*
@@ -40,19 +43,6 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    [
-      '@nuxtjs/font-awesome', {
-        imports: [
-          {
-            set: '@fortawesome/free-solid-svg-icons',
-            icons: ['fas']
-          },
-          {
-            set: '@fortawesome/free-brands-svg-icons',
-            icons: ['fab']
-          }
-        ]
-      }]
   ],
   /*
   ** Build configuration

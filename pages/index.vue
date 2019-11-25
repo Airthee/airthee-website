@@ -19,12 +19,14 @@
         </article>
         <div class="scroll-down">
           <span class="icon">
-            <i class="fas fa-home" />
+            <a href="#whoami">
+              <i class="fas fa-chevron-circle-down fa-2x" />
+            </a>
           </span>
         </div>
       </div>
     </header>
-    <h1 class="title is-1" data-aos="fade-down">
+    <h1 id="whoami" class="title is-1" data-aos="fade-down">
       $ whoami
     </h1>
     <section class="section--block">
