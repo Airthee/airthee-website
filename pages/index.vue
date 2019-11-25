@@ -1,64 +1,69 @@
 <template>
   <div>
-    <header id="profile-picture--container" ref="profilePictureContainer">
-      <div>
-        <h1 id="whoami" class="title is-1 display-fade">
-          $ whoami
-        </h1>
-        <figure class="image display-fade">
-          <img class="is-rounded" src="@/assets/images/me.jpg" alt="Photo of me at Brooklin Bridge">
-        </figure>
-        <article class="message display-fade">
-          <div class="message-body">
-            <blockquote>
-              {{ selectedCitation.text }}
-              <footer>
-                <cite>
-                  {{ selectedCitation.author }}
-                </cite>
-              </footer>
-            </blockquote>
-          </div>
-        </article>
-        <!-- <scroll-to target="#whoami" /> -->
+    <section class="hero is-primary is-fullheight" id="section-header">
+      <div class="hero-body">
+        <div class="container">
+          <h1 id="whoami" class="title is-1 display-fade">
+            $ whoami
+          </h1>
+          <figure class="image display-fade">
+            <img class="is-rounded" src="@/assets/images/me.jpg" alt="Photo of me at Brooklin Bridge">
+          </figure>
+          <article class="message display-fade">
+            <div class="message-body">
+              <blockquote>
+                {{ selectedCitation.text }}
+                <footer>
+                  <cite>
+                    {{ selectedCitation.author }}
+                  </cite>
+                </footer>
+              </blockquote>
+            </div>
+          </article>
+        </div>
       </div>
-    </header>
+    </section>
 
-    <section id="section-informations" class="section--block">
-      <div class="section--block--container">
-        <h3 class="subtitle is-3" :data-aos="randomAOSAnimation()">
-          Informations
-        </h3>
-        <div class="box" :data-aos="randomAOSAnimation()">
-          <p class="content">
-            <ul>
-              <li v-for="(information, i) in informations" :key="i">
-                {{ information }}
-              </li>
-            </ul>
-          </p>
+    <section class="hero is-default is-fullheight" id="section-informations">
+      <div class="hero-body">
+        <div class="container">
+          <h3 class="subtitle is-3" :data-aos="randomAOSAnimation()">
+            Informations
+          </h3>
+          <div class="box" :data-aos="randomAOSAnimation()">
+            <p class="content">
+              <ul>
+                <li v-for="(information, i) in informations" :key="i">
+                  {{ information }}
+                </li>
+              </ul>
+            </p>
+          </div>
         </div>
       </div>
       <!-- <scroll-to target="#section-skills" /> -->
     </section>
 
-    <section id="section-skills" class="section--block">
-      <div class="section--block--container">
-        <h3 class="subtitle is-3" :data-aos="randomAOSAnimation()">
-          Skills
-        </h3>
-        <div v-for="(skill, i) in skills" :key="i" class="skills-card--container" :data-aos="randomAOSAnimation()">
-          <div class="card">
-            <header class="card-header">
-              <p class="card-header-title">
-                {{ skill.name }}
-              </p>
-            </header>
-            <div class="card-content">
-              <div class="content">
-                <progress class="progress is-primary" :value="skill.value" max="100">
-                  {{ skill.value }}%
-                </progress>
+    <section class="hero is-default is-fullheight" id="section-skills">
+      <div class="hero-body">
+        <div class="container">
+          <h3 class="subtitle is-3" :data-aos="randomAOSAnimation()">
+            Skills
+          </h3>
+          <div v-for="(skill, i) in skills" :key="i" class="skills-card--container" :data-aos="randomAOSAnimation()">
+            <div class="card">
+              <header class="card-header">
+                <p class="card-header-title">
+                  {{ skill.name }}
+                </p>
+              </header>
+              <div class="card-content">
+                <div class="content">
+                  <progress class="progress is-primary" :value="skill.value" max="100">
+                    {{ skill.value }}%
+                  </progress>
+                </div>
               </div>
             </div>
           </div>
@@ -66,22 +71,20 @@
       </div>
     </section>
 
-    <section id="section-socials" class="section--block">
-      <div class="section--block--container">
-        <h3 class="subtitle is-3" :data-aos="randomAOSAnimation()">
-          Social networks
-        </h3>
-        <div class="socials--container">
-          <a v-for="(network, i) in socialNetworks" :key="i" :href="network.link" target="_blank" :data-aos="randomAOSAnimation()">
-            <img :src="network.img" :alt="network.imgAlt" class="social-img" :title="network.name">
-          </a>
+    <section class="hero is-default is-fullheight" id="section-socials">
+      <div class="hero-body">
+        <div class="container">
+          <h3 class="subtitle is-3" :data-aos="randomAOSAnimation()">
+            Social networks
+          </h3>
+          <div class="socials--container">
+            <a v-for="(network, i) in socialNetworks" :key="i" :href="network.link" target="_blank" :data-aos="randomAOSAnimation()">
+              <img :src="network.img" :alt="network.imgAlt" class="social-img" :title="network.name">
+            </a>
+          </div>
         </div>
       </div>
     </section>
-
-    <footer>
-      Contact : <a href="mailto:contact@airthee.com">contact (at) airthee.com</a>
-    </footer>
   </div>
 </template>
 
@@ -105,11 +108,6 @@ export default {
     this.selectedCitation = this.randomCitation()
   },
   mounted () {
-    // Dynamic height for profil container
-    // Needs to fit all the window
-    const profilePictureContainer = this.$refs.profilePictureContainer
-    profilePictureContainer.style.height = `calc(100vh - ${profilePictureContainer.offsetParent.offsetTop}px)` // window.innerHeight - profilePictureContainer.offsetTop
-    profilePictureContainer.style.paddingBottom = `${profilePictureContainer.offsetParent.offsetTop}px` // window.innerHeight - profilePictureContainer.offsetTop
 
     // AOS initialisation
     AOS.init({
@@ -174,56 +172,29 @@ export default {
 </script>
 
 <style lang="scss">
-  #profile-picture--container {
-    margin: auto;
-    text-align: center;
-    position: relative;
-
-    & > div {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-    }
-
+  #section-header {
     figure.image {
       margin: auto;
       margin-bottom: 1rem;
       width: 45vw;
-      height: auto;
     }
   }
 
-  .skills-card--container {
-    width: 25%;
-    display: inline-block;
-    padding: 10px;
+  #section-skills {
+    .skills-card--container {
+      width: 25%;
+      display: inline-block;
+      padding: 10px;
+    }
   }
 
-  .socials--container {
-    display: inline-block;
-    text-align: center;
-
+  #section-socials {
     a {
       padding: 10px;
       .social-img {
         width: auto;
         height: 60px;
       }
-    }
-  }
-
-  .section--block {
-    height: 100vh;
-    position: relative;
-
-    .section--block--container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
     }
   }
 

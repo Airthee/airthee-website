@@ -1,9 +1,15 @@
 <template>
-  <section class="hero">
-    <div class="hero-body">
-      <nuxt class="container" />
-    </div>
-  </section>
+  <div>
+    <nuxt />
+
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          Send me a mail at <a href="mailto:contact@airthee.com">contact@airthee.com</a>
+        </p>
+      </div>
+    </footer>
+  </div>
 </template>
 
 <style lang="scss">
