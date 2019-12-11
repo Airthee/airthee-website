@@ -1,12 +1,15 @@
 <template>
   <div>
-    <section id="section-header" class="hero is-primary is-fullheight">
-      <div ref="headerHeroBody" class="hero-body">
-        <div class="container">
-          <figure ref="headerFigureImage" class="image display-fade is-512x512">
+    <section id="section-header" ref="headerSection" class="hero is-primary is-fullheight">
+      <div class="hero-body">
+        <div ref="headerContainer" class="container">
+          <h1 id="whoami" class="title is-1 display-fade">
+            $ whoami
+          </h1>
+          <figure ref="headerFigureImage" class="image display-fade">
             <img class="is-rounded" src="@/assets/images/me.jpg" alt="Photo of me at Brooklin Bridge">
           </figure>
-          <article ref="headerCitation" class="message display-fade">
+          <article class="message display-fade">
             <div class="message-body">
               <blockquote>
                 {{ selectedCitation.text }}
@@ -26,7 +29,7 @@
       <div class="hero-body">
         <div class="container">
           <h3 class="subtitle is-3" :data-aos="randomAOSAnimation()">
-            $ whoami
+            Informations
           </h3>
           <div class="box" :data-aos="randomAOSAnimation()">
             <p class="content">
@@ -137,6 +140,9 @@ export default {
       duration: 1200
     })
 
+    // Resize image
+    this.$refs.headerFigureImage.style.width = (this.$refs.headerSection.offsetHeight - this.$refs.headerContainer.offsetHeight).toString().concat('px')
+
     // Pick a citation randomly every 10 second
     setInterval(() => { this.selectedCitation = this.randomCitation() }, 10000)
   },
@@ -199,6 +205,7 @@ export default {
     figure.image {
       margin: auto;
       margin-bottom: 1rem;
+      width: 50%;
     }
   }
 
