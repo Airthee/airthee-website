@@ -18,6 +18,10 @@
       "value": 70
     },
     {
+      "name": "GraphQL",
+      "value": "40"
+    },
+    {
       "name": "Laravel",
       "value": 60
     },
@@ -31,7 +35,7 @@
     },
     {
       "name": "SQL",
-      "value": 60
+      "value": 70
     },
     {
       "name": "Python",

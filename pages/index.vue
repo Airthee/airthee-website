@@ -9,18 +9,10 @@
           <figure ref="headerFigureImage" class="image display-fade">
             <img class="is-rounded" src="@/assets/images/me.jpg" alt="Photo of me at Brooklin Bridge">
           </figure>
-          <article class="message display-fade">
-            <div class="message-body">
-              <blockquote>
-                {{ selectedCitation.text }}
-                <footer>
-                  <cite>
-                    {{ selectedCitation.author }}
-                  </cite>
-                </footer>
-              </blockquote>
-            </div>
-          </article>
+          <RandomCitation
+            :citations="citations"
+            interval="10000"
+          />
         </div>
       </div>
     </section>
@@ -28,10 +20,10 @@
     <section id="section-informations" class="hero is-default is-fullheight">
       <div class="hero-body">
         <div class="container">
-          <h3 class="subtitle is-3" :data-aos="randomAOSAnimation()">
+          <h3 :data-aos="randomAOSAnimation()" class="subtitle is-3">
             Informations
           </h3>
-          <div class="box" :data-aos="randomAOSAnimation()">
+          <div :data-aos="randomAOSAnimation()" class="box">
             <p class="content">
               <ul>
                 <li v-for="(information, i) in informations" :key="i">
@@ -48,7 +40,7 @@
     <section id="section-education" class="hero is-default is-fullheight">
       <div class="hero-body">
         <div class="container">
-          <h3 class="subtitle is-3" :data-aos="randomAOSAnimation()">
+          <h3 :data-aos="randomAOSAnimation()" class="subtitle is-3">
             Education
           </h3>
           <div v-for="(formation, i) in education" :key="i" :data-aos="randomAOSAnimation()">
@@ -75,10 +67,10 @@
     <section id="section-skills" class="hero is-default is-fullheight">
       <div class="hero-body">
         <div class="container">
-          <h3 class="subtitle is-3" :data-aos="randomAOSAnimation()">
+          <h3 :data-aos="randomAOSAnimation()" class="subtitle is-3">
             Skills
           </h3>
-          <div v-for="(skill, i) in skills" :key="i" class="skills-card--container" :data-aos="randomAOSAnimation()">
+          <div v-for="(skill, i) in skills" :key="i" :data-aos="randomAOSAnimation()" class="skills-card--container">
             <div class="card">
               <header class="card-header">
                 <p class="card-header-title">
@@ -87,7 +79,7 @@
               </header>
               <div class="card-content">
                 <div class="content">
-                  <progress class="progress is-primary" :value="skill.value" max="100">
+                  <progress :value="skill.value" class="progress is-primary" max="100">
                     {{ skill.value }}%
                   </progress>
                 </div>
@@ -101,12 +93,12 @@
     <section id="section-socials" class="hero is-default is-fullheight">
       <div class="hero-body">
         <div class="container">
-          <h3 class="subtitle is-3" :data-aos="randomAOSAnimation()">
+          <h3 :data-aos="randomAOSAnimation()" class="subtitle is-3">
             Social networks
           </h3>
           <div class="socials--container">
-            <a v-for="(network, i) in socialNetworks" :key="i" :href="network.link" target="_blank" :data-aos="randomAOSAnimation()">
-              <img :src="network.img" :alt="network.imgAlt" class="social-img" :title="network.name">
+            <a v-for="(network, i) in socialNetworks" :key="i" :href="network.link" :data-aos="randomAOSAnimation()" target="_blank">
+              <img :src="network.img" :alt="network.imgAlt" :title="network.name" class="social-img">
             </a>
           </div>
         </div>
@@ -118,22 +110,15 @@
 <script>
 import AOS from 'aos'
 // import ScrollTo from '@/components/ScrollTo'
+import RandomCitation from '@/components/RandomCitation'
 import 'aos/dist/aos.css'
 
 export default {
-  // components: {
-  //   ScrollTo
-  // },
-  data () {
-    // Add static data to component data
-    return Object.assign({
-      selectedCitation: null
-    }, require('./index.data.json'))
+  components: {
+    // ScrollTo
+    RandomCitation
   },
-  created () {
-    // Select a citation randomly
-    this.selectedCitation = this.randomCitation()
-  },
+  data: () => Object.assign({}, require('./index.data.json')),
   mounted () {
     // AOS initialisation
     AOS.init({
@@ -142,18 +127,8 @@ export default {
 
     // Resize image
     this.$refs.headerFigureImage.style.width = (this.$refs.headerSection.offsetHeight - this.$refs.headerContainer.offsetHeight).toString().concat('px')
-
-    // Pick a citation randomly every 10 second
-    setInterval(() => { this.selectedCitation = this.randomCitation() }, 10000)
   },
   methods: {
-    /**
-     * Method picking a citation randomly
-     */
-    randomCitation () {
-      return this.citations[Math.floor(Math.random() * this.citations.length)]
-    },
-
     /**
      * Method picking a random AOS class
      */
@@ -205,7 +180,7 @@ export default {
     figure.image {
       margin: auto;
       margin-bottom: 1rem;
-      width: 50%;
+      width: 10%;
     }
   }
 
@@ -230,21 +205,6 @@ export default {
         width: auto;
         height: 60px;
       }
-    }
-  }
-
-  .display-fade {
-    animation-duration: 7s;
-    animation-name: displayFade;
-  }
-
-  @keyframes displayFade {
-    from {
-      opacity: 0;
-    }
-
-    to {
-      opacity: 1;
     }
   }
 </style>

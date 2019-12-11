@@ -1,0 +1,14 @@
+.display-fade {
+  animation-duration: 7s;
+  animation-name: displayFade;
+}
+
+@keyframes displayFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
