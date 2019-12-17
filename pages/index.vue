@@ -3,15 +3,12 @@
     <section id="section-header" ref="headerSection" class="hero is-primary is-fullheight">
       <div class="hero-body">
         <div ref="headerContainer" class="container">
-          <h1 id="whoami" class="title is-1 display-fade">
-            $ whoami
-          </h1>
           <figure ref="headerFigureImage" class="image display-fade">
             <img class="is-rounded" src="@/assets/images/me.jpg" alt="Photo of me at Brooklin Bridge">
           </figure>
           <RandomCitation
             :citations="citations"
-            interval="10000"
+            :interval="10000"
           />
         </div>
       </div>
@@ -44,17 +41,23 @@
             Education
           </h3>
           <div v-for="(formation, i) in education" :key="i" :data-aos="randomAOSAnimation()">
-            <div class="card">
-              <header class="card-header">
-                <p class="card-header-title">
-                  {{ formation.description }}
-                </p>
-              </header>
-              <div class="card-content">
-                <div class="content">
-                  <div>{{ formation.location }}</div>
-                  <div>{{ formation.school }}</div>
-                  <div>{{ formation.year }}</div>
+            <div class="columns is-vcentered">
+              <div class="column is-one-fifth">
+                {{ formation.end }} - {{ formation.start }}
+              </div>
+              <div class="column">
+                <div class="card">
+                  <header class="card-header">
+                    <p class="card-header-title">
+                      {{ formation.description }}
+                    </p>
+                  </header>
+                  <div class="card-content">
+                    <div class="content">
+                      <div>{{ formation.location }}</div>
+                      <div>{{ formation.school }}</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -181,12 +184,6 @@ export default {
       margin: auto;
       margin-bottom: 1rem;
       width: 10%;
-    }
-  }
-
-  #section-education {
-    .card {
-      margin-bottom: 10px;
     }
   }
 

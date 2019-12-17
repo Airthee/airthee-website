@@ -1,6 +1,6 @@
 {
   "informations": [
-    "Raphaël TISON",
+    "Raphaël TISON (@Airthee)",
     "23 years old",
     "Vendée, France"
   ],
@@ -63,25 +63,29 @@
       "school": "EPSI",
       "location": "Nantes, 44200, France",
       "description": "RNCP 1 - Expert en informatique & système d’information",
-      "year": "2018 - Today"
+      "start": 2018,
+      "end": "today"
     },
     {
       "school": "IUT",
       "location": "La Roche sur Yon, 85000, France",
       "description": "Licence Professionnelle DIP",
-      "year": "2017 - 2018"
+      "start": "2017",
+      "end": "2018"
     },
     {
       "school": "Lycée Jean de Lattre De Tassigny",
       "location": "La Roche sur Yon, 85000, France",
       "description": "BTS Systèmes Numériques",
-      "year": "2015 - 2017"
+      "start": "2015",
+      "end": "2017"
     },
     {
       "school": "Lycée Jean de Lattre De Tassigny",
       "location": "La Roche sur Yon, 85000, France",
       "description": "BAC STI2D",
-      "year": "2013 - 2015"
+      "start": "2013",
+      "end": "2015"
     }
   ],
   "socialNetworks": [
