@@ -7,6 +7,16 @@
         <p>
           Send me a mail at <a href="mailto:contact@airthee.com">contact@airthee.com</a>
         </p>
+        <p>
+          <ul class="links">
+            <li>
+              <nuxt-link to="/">Home</nuxt-link>
+            </li>
+            <li>
+              <nuxt-link to="/credit">Credits</nuxt-link>
+            </li>
+          </ul>
+        </p>
       </div>
     </footer>
   </div>
@@ -40,4 +50,16 @@
   $input-shadow: none;
 
   @import "@/node_modules/bulma/bulma.sass";
+</style>
+
+<style lang="scss" scoped>
+  .links {
+    li {
+      display: inline-block;
+
+      &:not(:last-child)::after {
+        content: ' | ';
+      }
+    }
+  }
 </style>
