@@ -34,37 +34,19 @@
       <!-- <scroll-to target="#section-skills" /> -->
     </section>
 
-    <section id="section-education" class="hero is-default is-fullheight">
+    <section id="section-history" class="hero is-default is-fullheight">
       <div class="hero-body">
         <div class="container">
           <h3 :data-aos="randomAOSAnimation()" class="subtitle is-3">
-            Education
+            History
           </h3>
-          <div v-for="(formation, i) in education" :key="i" :data-aos="randomAOSAnimation()">
-            <div class="columns is-vcentered">
-              <div class="column is-one-fifth">
-                {{ formation.end }} - {{ formation.start }}
-              </div>
-              <div class="column">
-                <div class="card">
-                  <header class="card-header">
-                    <p class="card-header-title">
-                      {{ formation.description }}
-                    </p>
-                  </header>
-                  <div class="card-content">
-                    <div class="content">
-                      <div>{{ formation.location }}</div>
-                      <div>{{ formation.school }}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Timeline
+            :data-aos="randomAOSAnimation()"
+            :timeline-items="timeline"
+            date-locale="fr-FR"
+          />
         </div>
       </div>
-      <!-- <scroll-to target="#section-skills" /> -->
     </section>
 
     <section id="section-skills" class="hero is-default is-fullheight">
@@ -113,15 +95,18 @@
 <script>
 import AOS from 'aos'
 // import ScrollTo from '@/components/ScrollTo'
+import Timeline from 'timeline-vuejs'
+import indexData from './index.data.js'
 import RandomCitation from '@/components/RandomCitation'
 import 'aos/dist/aos.css'
 
 export default {
   components: {
     // ScrollTo
-    RandomCitation
+    RandomCitation,
+    Timeline
   },
-  data: () => Object.assign({}, require('./index.data.json')),
+  data: () => Object.assign({}, indexData),
   mounted () {
     // AOS initialisation
     AOS.init({

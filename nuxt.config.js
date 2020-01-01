@@ -26,7 +26,8 @@ export default {
   ** Global CSS
   */
   css: [
-    '@/assets/css/style.scss'
+    '@/assets/css/style.scss',
+    './node_modules/timeline-vuejs/dist/timeline-vuejs.css'
   ],
   /*
   ** Plugins to load before mounting the App
