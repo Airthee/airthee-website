@@ -14,27 +14,29 @@
       </div>
     </section>
 
-    <section id="section-informations" class="hero is-default is-fullheight">
+    <section id="section-informations" class="hero is-large">
       <div class="hero-body">
         <div class="container">
           <h3 :data-aos="randomAOSAnimation()" class="subtitle is-3">
             Informations
           </h3>
-          <div :data-aos="randomAOSAnimation()" class="box">
-            <p class="content">
-              <ul>
-                <li v-for="(information, i) in informations" :key="i">
-                  {{ information }}
-                </li>
-              </ul>
-            </p>
+          <div :data-aos="randomAOSAnimation()" class="card">
+            <div class="card-content">
+              <p class="content">
+                <ul>
+                  <li v-for="(information, i) in informations" :key="i">
+                    {{ information }}
+                  </li>
+                </ul>
+              </p>
+            </div>
           </div>
         </div>
       </div>
       <!-- <scroll-to target="#section-skills" /> -->
     </section>
 
-    <section id="section-history" class="hero is-default is-fullheight">
+    <section id="section-history" class="hero is-large">
       <div class="hero-body">
         <div class="container">
           <h3 :data-aos="randomAOSAnimation()" class="subtitle is-3">
@@ -49,7 +51,7 @@
       </div>
     </section>
 
-    <section id="section-skills" class="hero is-default is-fullheight">
+    <section id="section-skills" class="hero is-large">
       <div class="hero-body">
         <div class="container">
           <h3 :data-aos="randomAOSAnimation()" class="subtitle is-3">
@@ -75,7 +77,7 @@
       </div>
     </section>
 
-    <section id="section-socials" class="hero is-default is-fullheight">
+    <section id="section-socials" class="hero is-large">
       <div class="hero-body">
         <div class="container">
           <h3 :data-aos="randomAOSAnimation()" class="subtitle is-3">
@@ -106,7 +108,9 @@ export default {
     RandomCitation,
     Timeline
   },
+
   data: () => Object.assign({}, indexData),
+
   mounted () {
     // AOS initialisation
     AOS.init({
@@ -114,7 +118,9 @@ export default {
     })
 
     // Resize image
-    this.$refs.headerFigureImage.style.width = (this.$refs.headerSection.offsetHeight - this.$refs.headerContainer.offsetHeight).toString().concat('px')
+    const headerSectionHeight = getComputedStyle(this.$refs.headerSection).height
+    const headerContainerHeight = getComputedStyle(this.$refs.headerContainer).height
+    this.$refs.headerFigureImage.style.width = `calc(${headerSectionHeight} - ${headerContainerHeight})`
   },
   methods: {
     /**
@@ -164,6 +170,8 @@ export default {
 </script>
 
 <style lang="scss">
+  @import '@/assets/css/variables';
+
   @mixin background-image-opacity {
     content: "";
     opacity: 0.2;
@@ -205,6 +213,10 @@ export default {
 
     .timeline {
       max-width: none;
+
+      .dot {
+        background-color: $primary !important;
+      }
     }
   }
 

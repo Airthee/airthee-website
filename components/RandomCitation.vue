@@ -5,7 +5,7 @@
         {{ selectedCitation.text }}
         <footer>
           <cite>
-            {{ selectedCitation.author }}
+            - {{ selectedCitation.author }}
           </cite>
         </footer>
       </blockquote>
