@@ -14,50 +14,46 @@
       </div>
     </section>
 
-    <section id="section-informations" class="hero is-large">
-      <div class="hero-body">
-        <div class="container">
-          <h3 :data-aos="randomAOSAnimation()" class="subtitle is-3">
-            Informations
-          </h3>
-          <div :data-aos="randomAOSAnimation()" class="card">
-            <div class="card-content">
-              <p class="content">
-                <ul>
-                  <li v-for="(information, i) in informations" :key="i">
-                    {{ information }}
-                  </li>
-                </ul>
-              </p>
-            </div>
+    <section id="section-informations" class="main-section">
+      <div class="container">
+        <h3 :data-aos="randomAOSAnimation()" class="subtitle is-3">
+          Informations
+        </h3>
+        <div :data-aos="randomAOSAnimation()" class="card">
+          <div class="card-content">
+            <p class="content">
+              <ul>
+                <li v-for="(information, i) in informations" :key="i">
+                  {{ information }}
+                </li>
+              </ul>
+            </p>
           </div>
         </div>
       </div>
       <!-- <scroll-to target="#section-skills" /> -->
     </section>
 
-    <section id="section-history" class="hero is-large">
-      <div class="hero-body">
-        <div class="container">
-          <h3 :data-aos="randomAOSAnimation()" class="subtitle is-3">
-            History
-          </h3>
-          <Timeline
-            :data-aos="randomAOSAnimation()"
-            :timeline-items="timeline"
-            date-locale="fr-FR"
-          />
-        </div>
+    <section id="section-history" class="main-section">
+      <div class="container">
+        <h3 :data-aos="randomAOSAnimation()" class="subtitle is-3">
+          History
+        </h3>
+        <Timeline
+          :data-aos="randomAOSAnimation()"
+          :timeline-items="timeline"
+          date-locale="fr-FR"
+        />
       </div>
     </section>
 
-    <section id="section-skills" class="hero is-large">
-      <div class="hero-body">
-        <div class="container">
-          <h3 :data-aos="randomAOSAnimation()" class="subtitle is-3">
-            Skills
-          </h3>
-          <div v-for="(skill, i) in skills" :key="i" :data-aos="randomAOSAnimation()" class="skills-card--container">
+    <section id="section-skills" class="main-section">
+      <div class="container">
+        <h3 :data-aos="randomAOSAnimation()" class="subtitle is-3">
+          Skills
+        </h3>
+        <div v-for="(rowSkills, rowIndex) in splicedSkills(4)" :key="rowIndex" class="columns">
+          <div v-for="(skill, skillIndex) in rowSkills" :key="skillIndex" :data-aos="randomAOSAnimation()" class="skills-card--container column is-one-quarter">
             <div class="card">
               <header class="card-header">
                 <p class="card-header-title">
@@ -77,17 +73,15 @@
       </div>
     </section>
 
-    <section id="section-socials" class="hero is-large">
-      <div class="hero-body">
-        <div class="container">
-          <h3 :data-aos="randomAOSAnimation()" class="subtitle is-3">
-            Social networks
-          </h3>
-          <div class="socials--container">
-            <a v-for="(network, i) in socialNetworks" :key="i" :href="network.link" :data-aos="randomAOSAnimation()" target="_blank">
-              <img :src="network.img" :alt="network.imgAlt" :title="network.name" class="social-img">
-            </a>
-          </div>
+    <section id="section-socials" class="main-section">
+      <div class="container">
+        <h3 :data-aos="randomAOSAnimation()" class="subtitle is-3">
+          Social networks
+        </h3>
+        <div class="socials--container">
+          <a v-for="(network, i) in socialNetworks" :key="i" :href="network.link" :data-aos="randomAOSAnimation()" target="_blank">
+            <img :src="network.img" :alt="network.imgAlt" :title="network.name" class="social-img">
+          </a>
         </div>
       </div>
     </section>
@@ -116,12 +110,8 @@ export default {
     AOS.init({
       duration: 1200
     })
-
-    // Resize image
-    const headerSectionHeight = getComputedStyle(this.$refs.headerSection).height
-    const headerContainerHeight = getComputedStyle(this.$refs.headerContainer).height
-    this.$refs.headerFigureImage.style.width = `calc(${headerSectionHeight} - ${headerContainerHeight})`
   },
+
   methods: {
     /**
      * Method picking a random AOS class
@@ -164,6 +154,18 @@ export default {
         type = Object.keys(animations)[Math.floor(Math.random() * Object.keys(animations).length)]
       }
       return animations[type][Math.floor(Math.random() * animations[type].length)]
+    },
+
+    /**
+     * Return spliced skills
+     */
+    splicedSkills (chunkLength) {
+      const chunks = []
+      const skillsCopy = Object.assign([], this.skills)
+      while (skillsCopy.length > 0) {
+        chunks.push(skillsCopy.splice(0, chunkLength))
+      }
+      return chunks
     }
   }
 }
@@ -186,11 +188,24 @@ export default {
     background-position: 95% 50%;
   }
 
+  .main-section {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   #section-header {
     figure.image {
+      display: table;
       margin: auto;
       margin-bottom: 1rem;
-      width: 10%;
+      width: 80%;
+      height: auto;
+
+      img {
+        display: table-cell;
+      }
     }
   }
 
@@ -228,11 +243,6 @@ export default {
       background-image: url('/images/boost.svg');
     }
 
-    .skills-card--container {
-      width: 25%;
-      display: inline-block;
-      padding: 10px;
-    }
   }
 
   #section-socials {

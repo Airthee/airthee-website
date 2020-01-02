@@ -9,6 +9,10 @@
   @charset "utf-8";
   @import "@/assets/css/variables";
   @import "@/node_modules/bulma/bulma.sass";
+
+  body {
+    overflow-x: hidden;
+  }
 </style>
 
 <script>
