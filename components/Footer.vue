@@ -2,9 +2,6 @@
   <footer class="footer has-background-dark has-text-light">
     <div class="content has-text-centered">
       <p>
-        Send me a mail at <a href="mailto:contact@airthee.com">contact@airthee.com</a>.
-      </p>
-      <p>
         You can see the sources of this project on
         <a noreferrer noopener target="_blank" href="https://github.com/Airthee/airthee-website">Github</a>.
       </p>
