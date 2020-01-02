@@ -1,6 +1,8 @@
 # airthee-website
 
-> My mind-blowing Nuxt.js project
+[![Netlify Status](https://api.netlify.com/api/v1/badges/209d3b7d-29da-43af-8d87-2cf9fc0db786/deploy-status)](https://app.netlify.com/sites/airthee-website/deploys)
+
+> A resume / portfolio website made with NuxtJS !
 
 ## Build Setup
 
