@@ -17,7 +17,7 @@
           {{ formGlobalNotification.message }}
         </div>
 
-        <form ref="formContact" name="contact" method="POST" data-netlify="true">
+        <form ref="formContact" name="contact" method="POST" netlify>
           <div class="field">
             <label class="label">Name</label>
             <div class="control has-icons-left">
