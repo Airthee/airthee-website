@@ -3,7 +3,7 @@
     <div class="content has-text-centered">
       <p>
         You can see the sources of this project on
-        <a noreferrer noopener target="_blank" href="https://github.com/Airthee/airthee-website">Github</a>.
+        <a rel="noreferrer noopener" target="_blank" href="https://github.com/Airthee/airthee-website">Github</a>.
       </p>
       <p>
         <ul class="links">
