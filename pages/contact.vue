@@ -12,6 +12,11 @@
           <br>
         </p>
 
+        <div v-if="formGlobalNotification !== null" :class="formGlobalNotification.class" class="notification">
+          <button @click="formGlobalNotification = null" class="delete" />
+          {{ formGlobalNotification.message }}
+        </div>
+
         <form ref="formContact" @submit.prevent="submitForm" name="contact" method="POST" data-netlify="true">
           <div class="field">
             <label class="label">Name</label>
@@ -112,6 +117,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data () {
     return {
@@ -126,7 +133,8 @@ export default {
         email: null,
         subject: null,
         message: null
-      }
+      },
+      formGlobalNotification: null
     }
   },
 
@@ -163,17 +171,25 @@ export default {
       // Else, errors are already displayed
       if (!this.hasError) {
         // Retrive form action
-        // const formAction = this.$refs.formContact.action
+        const formAction = this.$refs.formContact.action
         // console.log(this.formData) // Données du formulaire
 
         // Serialize form
         // Do post
-
+        axios.post(formAction, this.formData)
+          .then((response) => {
+            this.formGlobalNotification = {
+              message: 'Message successfully sent',
+              class: 'is-success'
+            }
+          })
+          .catch((error) => {
+            this.formGlobalNotification = {
+              message: error,
+              class: 'is-danger'
+            }
+          })
       }
-    },
-
-    updateNameError () {
-
     }
   }
 }
