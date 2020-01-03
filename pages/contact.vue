@@ -17,7 +17,7 @@
           {{ formGlobalNotification.message }}
         </div>
 
-        <form ref="formContact" @submit.prevent="submitForm" name="contact" method="POST" data-netlify="true">
+        <form ref="formContact" name="contact" method="POST" data-netlify="true">
           <div class="field">
             <label class="label">Name</label>
             <div class="control has-icons-left">
@@ -117,7 +117,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 
 export default {
   data () {
@@ -166,31 +166,31 @@ export default {
   },
 
   methods: {
-    submitForm () {
-      // If no error, we can submit
-      // Else, errors are already displayed
-      if (!this.hasError) {
-        // Retrive form action
-        const formAction = this.$refs.formContact.action
-        // console.log(this.formData) // Données du formulaire
+    // submitForm () {
+    //   // If no error, we can submit
+    //   // Else, errors are already displayed
+    //   if (!this.hasError) {
+    //     // Retrive form action
+    //     const formAction = this.$refs.formContact.action
+    //     // console.log(this.formData) // Données du formulaire
 
-        // Serialize form
-        // Do post
-        axios.post(formAction, this.formData)
-          .then((response) => {
-            this.formGlobalNotification = {
-              message: 'Message successfully sent',
-              class: 'is-success'
-            }
-          })
-          .catch((error) => {
-            this.formGlobalNotification = {
-              message: error,
-              class: 'is-danger'
-            }
-          })
-      }
-    }
+    //     // Serialize form
+    //     // Do post
+    //     axios.post(formAction, this.formData)
+    //       .then((response) => {
+    //         this.formGlobalNotification = {
+    //           message: 'Message successfully sent',
+    //           class: 'is-success'
+    //         }
+    //       })
+    //       .catch((error) => {
+    //         this.formGlobalNotification = {
+    //           message: error,
+    //           class: 'is-danger'
+    //         }
+    //       })
+    //   }
+    // }
   }
 }
 </script>
