@@ -17,7 +17,11 @@
           {{ formGlobalNotification.message }}
         </div>
 
-        <form ref="formContact" method="post">
+        <form
+          ref="formContact"
+          @submit.prevent="submitForm"
+          method="post"
+        >
           <div class="field">
             <label class="label">Name</label>
             <div class="control has-icons-left">
@@ -178,7 +182,7 @@ export default {
         // Serialize form
         // Do post
         const axiosConfig = {
-          header: { 'Content-Type': 'application/x-www-form-urlencoded' }
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         }
         axios.post(formAction, this.formData, axiosConfig)
           .then((response) => {
