@@ -17,7 +17,7 @@
           {{ formGlobalNotification.message }}
         </div>
 
-        <form ref="formContact">
+        <form ref="formContact" @submit.prevent="submitForm">
           <div class="field">
             <label class="label">Name</label>
             <div class="control has-icons-left">
