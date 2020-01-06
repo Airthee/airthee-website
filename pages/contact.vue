@@ -184,7 +184,7 @@ export default {
         const axiosConfig = {
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         }
-        axios.post(formAction, this.formData, axiosConfig)
+        axios.post(formAction, this.encodeFormValues(), axiosConfig)
           .then((response) => {
             this.formGlobalNotification = {
               message: 'Message successfully sent',
@@ -198,6 +198,14 @@ export default {
             }
           })
       }
+    },
+
+    // Encode form values to URI params
+    encodeFormValues () {
+      const urlParams = Object.keys(this.formData)
+        .map(name => `${name}=${encodeURIComponent(this.formData[name])}`)
+        .join('&')
+      return urlParams
     }
   }
 }
