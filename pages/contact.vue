@@ -177,7 +177,10 @@ export default {
 
         // Serialize form
         // Do post
-        axios.post(formAction, this.formData)
+        const axiosConfig = {
+          header: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        }
+        axios.post(formAction, this.formData, axiosConfig)
           .then((response) => {
             this.formGlobalNotification = {
               message: 'Message successfully sent',
