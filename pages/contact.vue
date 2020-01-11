@@ -13,14 +13,14 @@
         </p>
 
         <div v-if="formGlobalNotification !== null" :class="formGlobalNotification.class" class="notification">
-          <button @click="formGlobalNotification = null" class="delete" />
+          <button class="delete" @click="formGlobalNotification = null" />
           {{ formGlobalNotification.message }}
         </div>
 
         <form
           ref="formContact"
-          @submit.prevent="submitForm"
           method="post"
+          @submit.prevent="submitForm"
         >
           <div class="field">
             <label class="label">Name</label>

@@ -13,6 +13,11 @@
             </nuxt-link>
           </li>
           <li>
+            <nuxt-link to="/contact">
+              Contact
+            </nuxt-link>
+          </li>
+          <li>
             <nuxt-link to="/credits">
               Credits
             </nuxt-link>
