@@ -45,6 +45,28 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    [
+      'nuxt-i18n',
+      {
+        locales: [
+          {
+            code: 'en',
+            file: 'en-US.js',
+            name: 'English'
+          },
+          {
+            code: 'fr',
+            file: 'fr-FR.js',
+            name: 'Français'
+          }
+        ],
+        defaultLocale: 'fr',
+        lazy: true,
+        langDir: 'i18n/',
+        baseUrl: 'https://airthee.com',
+        seo: false
+      }
+    ]
   ],
   /*
   ** Build configuration

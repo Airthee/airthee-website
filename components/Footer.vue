@@ -1,28 +1,36 @@
 <template>
   <footer class="footer has-background-dark has-text-light">
+    <!-- Github link -->
     <div class="content has-text-centered">
       <p>
-        You can see the sources of this project on
+        {{ $t('footer.githubText') }}
         <a rel="noreferrer noopener" target="_blank" href="https://github.com/Airthee/airthee-website">Github</a>.
       </p>
+
+      <!-- Menu -->
       <p>
         <ul class="links">
           <li>
-            <nuxt-link to="/">
-              Home
-            </nuxt-link>
+            <nuxt-link :to="localePath('index')" v-t="'footer.homeLabel'" />
           </li>
           <li>
-            <nuxt-link to="/contact">
-              Contact
-            </nuxt-link>
+            <nuxt-link :to="localePath('contact')" v-t="'footer.contactLabel'" />
           </li>
           <li>
-            <nuxt-link to="/credits">
-              Credits
-            </nuxt-link>
+            <nuxt-link :to="localePath('credits')" v-t="'footer.creditsLabel'" />
           </li>
         </ul>
+      </p>
+
+      <!-- Lang switch -->
+      <p>
+        {{ $t('footer.changeLangText') }} :
+        <nuxt-link
+          v-for="locale in availableLocales"
+          v-html="locale.name"
+          :key="locale.code"
+          :to="switchLocalePath(locale.code)"
+        />
       </p>
     </div>
   </footer>
@@ -30,7 +38,11 @@
 
 <script>
 export default {
-
+  computed: {
+    availableLocales () {
+      return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale)
+    }
+  }
 }
 </script>
 

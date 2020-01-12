@@ -1,62 +1,11 @@
 export default {
+  mainPicture: {
+    alt: 'Photo de moi sur le pont de Brooklyn à New York'
+  },
   informations: [
     'Raphaël TISON (@Airthee)',
-    '23 years old',
+    '23 ans',
     'Vendée, France'
-  ],
-  skills: [
-    {
-      name: 'NodeJS',
-      value: 70
-    },
-    {
-      name: 'PHP',
-      value: 90
-    },
-    {
-      name: 'Symfony',
-      value: 70
-    },
-    {
-      name: 'GraphQL',
-      value: '40'
-    },
-    {
-      name: 'Laravel',
-      value: 60
-    },
-    {
-      name: 'VueJS',
-      value: 60
-    },
-    {
-      name: 'jQuery',
-      value: 80
-    },
-    {
-      name: 'SQL',
-      value: 70
-    },
-    {
-      name: 'Python',
-      value: 50
-    },
-    {
-      name: 'Git',
-      value: 90
-    },
-    {
-      name: 'Java',
-      value: 30
-    },
-    {
-      name: 'C / C++',
-      value: 50
-    },
-    {
-      name: 'HTML / CSS',
-      value: 80
-    }
   ],
   timeline: [
     {
@@ -85,19 +34,19 @@ export default {
       name: 'Github',
       link: 'https://github.com/Airthee',
       img: '/images/socials/github.png',
-      imgAlt: 'Github Logo'
+      imgAlt: 'Logo Github'
     },
     {
       name: 'Twitter',
       link: 'https://twitter.com/Airthee',
       img: '/images/socials/twitter.png',
-      imgAlt: 'Twitter Logo'
+      imgAlt: 'Logo Twitter'
     },
     {
       name: 'LinkedIn',
       link: 'https://www.linkedin.com/in/raphael-tison',
       img: '/images/socials/linkedin.png',
-      imgAlt: 'LinkedIn Logo'
+      imgAlt: 'Logo LinkedIn'
     }
   ],
   citations: [
