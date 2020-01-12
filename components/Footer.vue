@@ -47,6 +47,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import "@/assets/css/variables";
+
   footer {
     .links {
       li {
@@ -56,6 +58,10 @@ export default {
           content: ' | ';
         }
       }
+    }
+
+    a:hover {
+      color: $grey-light;
     }
   }
 </style>
