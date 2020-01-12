@@ -11,19 +11,13 @@
       <p>
         <ul class="links">
           <li>
-            <nuxt-link :to="localePath('index')">
-              {{ $t('footer.homeLabel') }}
-            </nuxt-link>
+            <nuxt-link :to="localePath('index')" v-t="'footer.homeLabel'" />
           </li>
           <li>
-            <nuxt-link :to="localePath('contact')">
-              {{ $t('footer.contactLabel') }}
-            </nuxt-link>
+            <nuxt-link :to="localePath('contact')" v-t="'footer.contactLabel'" />
           </li>
           <li>
-            <nuxt-link :to="localePath('credits')">
-              {{ $t('footer.creditsLabel') }}
-            </nuxt-link>
+            <nuxt-link :to="localePath('credits')" v-t="'footer.creditsLabel'" />
           </li>
         </ul>
       </p>
@@ -33,11 +27,10 @@
         {{ $t('footer.changeLangText') }} :
         <nuxt-link
           v-for="locale in availableLocales"
+          v-html="locale.name"
           :key="locale.code"
           :to="switchLocalePath(locale.code)"
-        >
-          {{ locale.name }}
-        </nuxt-link>
+        />
       </p>
     </div>
   </footer>

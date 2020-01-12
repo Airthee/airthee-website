@@ -9,14 +9,14 @@
         </div>
 
         <div v-if="formGlobalNotification !== null" :class="formGlobalNotification.class" class="notification">
-          <button @click="formGlobalNotification = null" class="delete" />
+          <button class="delete" @click="formGlobalNotification = null" />
           {{ formGlobalNotification.message }}
         </div>
 
         <form
           ref="formContact"
-          @submit.prevent="submitForm"
           method="post"
+          @submit.prevent="submitForm"
         >
           <div class="field">
             <label v-t="'contact.formLabels.name'" class="label" />
@@ -118,10 +118,10 @@ export default {
     return {
       formData: {
         'form-name': 'contact',
-        'name': '',
-        'email': '',
-        'subject': '',
-        'message': ''
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
       },
       formErrors: {
         name: null,
@@ -175,7 +175,7 @@ export default {
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         }
         axios.post(formAction, this.encodeFormValues(), axiosConfig)
-          .then((response) => {
+          .then(() => {
             this.formGlobalNotification = {
               message: 'Message successfully sent',
               class: 'is-success'
