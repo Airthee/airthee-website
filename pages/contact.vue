@@ -1,16 +1,12 @@
 <template>
   <section class="section has-background-white">
     <div class="container">
-      <h1 class="title">
-        Contact
-      </h1>
+      <h1 v-t="'contact.title'" class="title" />
 
       <div class="content">
-        <p>
-          You have a suggestion, an idea ?
-          <br>Or you just want to tell me something ? Just complete the following form.
-          <br>
-        </p>
+        <div class="page-description">
+          <div v-for="(line, lineIndex) in $t('contact.mainText')" :key="lineIndex" v-html="line" class="container" />
+        </div>
 
         <div v-if="formGlobalNotification !== null" :class="formGlobalNotification.class" class="notification">
           <button @click="formGlobalNotification = null" class="delete" />
@@ -23,95 +19,89 @@
           method="post"
         >
           <div class="field">
-            <label class="label">Name</label>
+            <label v-t="'contact.formLabels.name'" class="label" />
             <div class="control has-icons-left">
               <input
                 v-model="formData.name"
+                :placeholder="$t('contact.formPlaceholders.name')"
                 name="name"
                 required
                 class="input"
                 type="text"
-                placeholder="John DOE"
               >
               <span class="icon is-small is-left">
                 <i class="fas fa-id-badge" />
               </span>
               <p
                 v-if="formErrors.name !== null && formErrors.name.length > 0"
+                v-html="formErrors.name"
                 class="help is-danger"
-              >
-                {{ formErrors.name }}
-              </p>
+              />
             </div>
           </div>
 
           <div class="field">
-            <label class="label">Email</label>
+            <label v-t="'contact.formLabels.email'" class="label" />
             <div class="control has-icons-left">
               <input
                 v-model="formData.email"
+                :placeholder="$t('contact.formPlaceholders.email')"
                 name="email"
                 required
                 class="input"
                 type="email"
-                placeholder="you@example.com"
               >
               <span class="icon is-small is-left">
                 <i class="fas fa-envelope" />
               </span>
               <p
                 v-if="formErrors.email !== null && formErrors.email.length > 0"
+                v-html="formErrors.email"
                 class="help is-danger"
-              >
-                {{ formErrors.email }}
-              </p>
+              />
             </div>
           </div>
 
           <div class="field">
-            <label class="label">Subject</label>
+            <label v-t="'contact.formLabels.subject'" class="label" />
             <div class="control">
               <input
                 v-model="formData.subject"
+                :placeholder="$t('contact.formPlaceholders.subject')"
                 name="subject"
                 required
                 class="input"
                 type="text"
-                placeholder="Subject"
               >
               <p
                 v-if="formErrors.subject !== null && formErrors.subject.length > 0"
+                v-html="formErrors.subject"
                 class="help is-danger"
-              >
-                {{ formErrors.subject }}
-              </p>
+              />
             </div>
           </div>
 
           <div class="field">
-            <label class="label">Message</label>
+            <label v-t="'contact.formLabels.message'" class="label" />
             <div class="control">
               <textarea
                 v-model="formData.message"
+                :placeholder="$t('contact.formPlaceholders.message')"
                 name="message"
                 required
                 class="textarea"
-                placeholder="Your message here"
               />
               <p
                 v-if="formErrors.message !== null && formErrors.message.length > 0"
+                v-html="formErrors.message"
                 class="help is-danger"
-              >
-                {{ formErrors.message }}
-              </p>
+              />
             </div>
           </div>
 
           <div class="field is-grouped">
             <div class="control">
-              <button :disabled="hasError" type="submit" class="button is-link">
-                Submit
-              </button>
+              <button v-t="'contact.formLabels.submit'" :disabled="hasError" type="submit" class="button is-link" />
             </div>
           </div>
         </form>
@@ -211,5 +201,8 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+  .page-description {
+    margin-bottom: 1em;
+  }
 </style>

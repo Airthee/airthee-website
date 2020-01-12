@@ -4,10 +4,10 @@
       <div class="hero-body">
         <div ref="headerContainer" class="container">
           <figure ref="headerFigureImage" class="image display-fade">
-            <img class="is-rounded" src="~/assets/images/me.jpg" alt="Photo of me at Brooklin Bridge">
+            <img :alt="$t('mainPicture.alt')" src="~/assets/images/me.jpg" class="is-rounded">
           </figure>
           <RandomCitation
-            :citations="citations"
+            :citations="$t('citations')"
             :interval="10000"
           />
         </div>
@@ -16,16 +16,12 @@
 
     <section id="section-informations" class="main-section">
       <div class="container">
-        <h3 :data-aos="randomAOSAnimation()" class="subtitle is-3">
-          Informations
-        </h3>
+        <h3 :data-aos="randomAOSAnimation()" v-t="'home.sections.informations.title'" class="subtitle is-3" />
         <div :data-aos="randomAOSAnimation()" class="card">
           <div class="card-content">
             <p class="content">
               <ul>
-                <li v-for="(information, i) in informations" :key="i">
-                  {{ information }}
-                </li>
+                <li v-for="(information, i) in $t('informations')" :key="i" v-html="information" />
               </ul>
             </p>
           </div>
@@ -36,35 +32,27 @@
 
     <section id="section-history" class="main-section">
       <div class="container">
-        <h3 :data-aos="randomAOSAnimation()" class="subtitle is-3">
-          History
-        </h3>
+        <h3 :data-aos="randomAOSAnimation()" v-t="'home.sections.history.title'" class="subtitle is-3" />
         <Timeline
           :data-aos="randomAOSAnimation()"
-          :timeline-items="timeline"
-          date-locale="fr-FR"
+          :timeline-items="$t('timeline')"
+          :date-locale="$i18n.locale"
         />
       </div>
     </section>
 
     <section id="section-skills" class="main-section">
       <div class="container">
-        <h3 :data-aos="randomAOSAnimation()" class="subtitle is-3">
-          Skills
-        </h3>
+        <h3 :data-aos="randomAOSAnimation()" v-t="'home.sections.skills.title'" class="subtitle is-3" />
         <div v-for="(rowSkills, rowIndex) in splicedSkills(4)" :key="rowIndex" class="columns">
           <div v-for="(skill, skillIndex) in rowSkills" :key="skillIndex" :data-aos="randomAOSAnimation()" class="skills-card--container column is-one-quarter">
             <div class="card">
               <header class="card-header">
-                <p class="card-header-title">
-                  {{ skill.name }}
-                </p>
+                <p v-html="skill.name" class="card-header-title" />
               </header>
               <div class="card-content">
                 <div class="content">
-                  <progress :value="skill.value" class="progress is-primary" max="100">
-                    {{ skill.value }}%
-                  </progress>
+                  <progress v-html="skill.value" :value="skill.value" class="progress is-primary" max="100" />
                 </div>
               </div>
             </div>
@@ -75,11 +63,9 @@
 
     <section id="section-socials" class="main-section">
       <div class="container">
-        <h3 :data-aos="randomAOSAnimation()" class="subtitle is-3">
-          Social networks
-        </h3>
+        <h3 :data-aos="randomAOSAnimation()" v-t="'home.sections.socials.title'" class="subtitle is-3" />
         <div class="socials--container">
-          <a v-for="(network, i) in socialNetworks" :key="i" :href="network.link" :data-aos="randomAOSAnimation()" target="_blank">
+          <a v-for="(network, i) in $t('socialNetworks')" :key="i" :href="network.link" :data-aos="randomAOSAnimation()" target="_blank">
             <img :src="network.img" :alt="network.imgAlt" :title="network.name" class="social-img">
           </a>
         </div>
@@ -92,7 +78,6 @@
 import AOS from 'aos'
 // import ScrollTo from '@/components/ScrollTo'
 import Timeline from 'timeline-vuejs'
-import indexData from './index.data.js'
 import RandomCitation from '@/components/RandomCitation'
 import 'aos/dist/aos.css'
 
@@ -102,8 +87,6 @@ export default {
     RandomCitation,
     Timeline
   },
-
-  data: () => Object.assign({}, indexData),
 
   mounted () {
     // AOS initialisation
@@ -161,7 +144,7 @@ export default {
      */
     splicedSkills (chunkLength) {
       const chunks = []
-      const skillsCopy = Object.assign([], this.skills)
+      const skillsCopy = Object.assign([], this.$t('skills'))
       while (skillsCopy.length > 0) {
         chunks.push(skillsCopy.splice(0, chunkLength))
       }
