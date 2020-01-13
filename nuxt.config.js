@@ -8,7 +8,17 @@ export default {
     title: 'Airthee - Welcome to my world',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+
+      // Open Graph
+      { name: 'og:title', content: 'Airthee - Welcome to my world' },
+      { name: 'og:type', content: 'website' },
+      { name: 'og:url', content: 'https://airthee.com' },
+
+      // Twitter Card
+      { name: 'twitter:card', content: 'summary' },
+      { name: 'twitter:site', content: '@airthee' },
+      { name: 'twitter:title', content: 'Airthee - Welcome to my world' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
