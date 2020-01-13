@@ -21,9 +21,10 @@ export default {
   contact: {
     title: 'Contact',
     mainText: [
-      'Vous avez une suggestion ? Une idée ?',
-      'Ou vous souhaitez juste me dire quelque chose ? Complétez simplement le formulaire suivant.',
-      'Si votre message nécessite une réponse, je vous répondrais dès que possible.'
+      'Une suggestion ? Une idée ?',
+      'Vous souhaitez me contacter ? C\'est ici !',
+      'Complétez simplement le formulaire suivant.',
+      'Si votre message nécessite une réponse, je vous répondrai dès que possible.'
     ],
     formLabels: {
       name: 'Nom',
@@ -42,7 +43,7 @@ export default {
   credits: {
     title: 'Crédits',
     mainText: [
-      'Je dois vous l\'adrettre, je suis pas un bon dessinateur... C\'est pouquoi j\'ai besoin de ressources extérieures pour vous offrir une expérience utilisateur satisfaisante.',
+      'Je dois vous l\'adrettre, je suis pas un bon dessinateur... C\'est pouquoi j\'ai besoin de ressources extérieures pour vous offrir la meilleure expérience possible.',
       'Alors juste un grand "Merci" à tous ces artistes !'
     ]
   },

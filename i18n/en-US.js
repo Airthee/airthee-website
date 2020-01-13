@@ -21,8 +21,9 @@ export default {
   contact: {
     title: 'Contact',
     mainText: [
-      'You have a suggestion, an idea?',
-      'Or you just want to tell me something? Just complete the following form.',
+      'A suggestion ? An idea ?',
+      'You just want to contact me ? It\'s here !',
+      'Just complete the following form.',
       'If your message requires a reply, I will get back to you as soon as possible.'
     ],
     formLabels: {
@@ -42,7 +43,7 @@ export default {
   credits: {
     title: 'Credits',
     mainText: [
-      'I must confess to you, I\'m not a good drawer... This is why I need some external resources to give you a satisfying experience.',
+      'I must confess to you, I\'m not a good drawer... This is why I need some external resources to give you the best possible experience.',
       'So just a big "Thanks" to all these artists !'
     ]
   },
