@@ -7,7 +7,7 @@
             <img :alt="$t('mainPicture.alt')" src="~/assets/images/me.jpg" class="is-rounded">
           </figure>
           <RandomCitation
-            :citations="$t('citations')"
+            :citations="$t('index.citations')"
             :interval="10000"
           />
         </div>
@@ -16,12 +16,12 @@
 
     <section id="section-informations" class="main-section">
       <div class="container">
-        <h3 :data-aos="randomAOSAnimation()" v-t="'home.sections.informations.title'" class="subtitle is-3" />
+        <h3 :data-aos="randomAOSAnimation()" v-t="'index.sections.informations.title'" class="subtitle is-3" />
         <div :data-aos="randomAOSAnimation()" class="card">
           <div class="card-content">
             <p class="content">
               <ul>
-                <li v-for="(information, i) in $t('informations')" :key="i" v-html="information" />
+                <li v-for="(information, i) in $t('index.sections.informations.data')" :key="i" v-html="information" />
               </ul>
             </p>
           </div>
@@ -32,10 +32,10 @@
 
     <section id="section-history" class="main-section">
       <div class="container">
-        <h3 :data-aos="randomAOSAnimation()" v-t="'home.sections.history.title'" class="subtitle is-3" />
+        <h3 :data-aos="randomAOSAnimation()" v-t="'index.sections.history.title'" class="subtitle is-3" />
         <Timeline
           :data-aos="randomAOSAnimation()"
-          :timeline-items="$t('timeline')"
+          :timeline-items="$t('index.sections.history.timeline')"
           :date-locale="$i18n.locale"
         />
       </div>
@@ -43,9 +43,9 @@
 
     <section id="section-skills" class="main-section">
       <div class="container">
-        <h3 :data-aos="randomAOSAnimation()" v-t="'home.sections.skills.title'" class="subtitle is-3" />
+        <h3 :data-aos="randomAOSAnimation()" v-t="'index.sections.skills.title'" class="subtitle is-3" />
         <div class="columns is-multiline">
-          <div v-for="(skill, skillIndex) in $t('skills')" :key="skillIndex" class="column is-one-third">
+          <div v-for="(skill, skillIndex) in $t('index.sections.skills.list')" :key="skillIndex" class="column is-one-third">
             <div :data-aos="randomAOSAnimation()">
               <div class="card">
                 <header class="card-header">
@@ -63,11 +63,22 @@
       </div>
     </section>
 
+    <section id="section-work" class="main-section">
+      <div class="container">
+        <h3 :data-aos="randomAOSAnimation()" v-t="'index.sections.work.title'" class="subtitle is-3" />
+        <div class="columns is-multiline">
+          <div v-for="(work, workIndex) in $t('index.sections.work.list')" :key="workIndex" class="column is-half">
+            {{ work.url }}
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="section-socials" class="main-section">
       <div class="container">
-        <h3 :data-aos="randomAOSAnimation()" v-t="'home.sections.socials.title'" class="subtitle is-3" />
+        <h3 :data-aos="randomAOSAnimation()" v-t="'index.sections.socials.title'" class="subtitle is-3" />
         <div class="socials--container">
-          <a v-for="(network, i) in $t('socialNetworks')" :key="i" :href="network.link" :data-aos="randomAOSAnimation()" target="_blank">
+          <a v-for="(network, i) in $t('index.sections.socials.socialNetworks')" :key="i" :href="network.link" :data-aos="randomAOSAnimation()" target="_blank">
             <img :src="network.img" :alt="network.imgAlt" :title="network.name" class="social-img">
           </a>
         </div>
