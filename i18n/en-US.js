@@ -1,6 +1,11 @@
 import globalTranslations from './global.data'
 
 export default {
+  app: {
+    meta: {
+      description: 'Personal website of Raphaël TISON (@Airthee). Discover my achievements, my skills, my activities, in short, a lot of things about me!'
+    }
+  },
   home: {
     sections: {
       informations: {

@@ -27,7 +27,7 @@ export default {
         ...i18nSeo.htmlAttrs
       },
       meta: [
-        // Add some meta here...
+        { name: 'description', content: this.$t('app.meta.description') },
         ...i18nSeo.meta
       ],
       link: [
