@@ -151,11 +151,10 @@ export default {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: 95% 50%;
-    margin: 3em initial;
   }
 
   .main-section {
-    padding: 3em initial;
+    margin: 3em 0;
     min-height: 80vh;
     display: flex;
     justify-content: center;
