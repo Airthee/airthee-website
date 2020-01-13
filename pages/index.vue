@@ -44,15 +44,17 @@
     <section id="section-skills" class="main-section">
       <div class="container">
         <h3 :data-aos="randomAOSAnimation()" v-t="'home.sections.skills.title'" class="subtitle is-3" />
-        <div v-for="(rowSkills, rowIndex) in splicedSkills(4)" :key="rowIndex" class="columns">
-          <div v-for="(skill, skillIndex) in rowSkills" :key="skillIndex" :data-aos="randomAOSAnimation()" class="skills-card--container column is-one-quarter">
-            <div class="card">
-              <header class="card-header">
-                <p v-html="skill.name" class="card-header-title" />
-              </header>
-              <div class="card-content">
-                <div class="content">
-                  <progress v-html="skill.value" :value="skill.value" class="progress is-primary" max="100" />
+        <div class="columns is-multiline">
+          <div v-for="(skill, skillIndex) in $t('skills')" :key="skillIndex" class="column is-one-third">
+            <div :data-aos="randomAOSAnimation()">
+              <div class="card">
+                <header class="card-header">
+                  <p v-html="skill.name" class="card-header-title" />
+                </header>
+                <div class="card-content">
+                  <div class="content">
+                    <progress v-html="skill.value" :value="skill.value" class="progress is-primary" max="100" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -137,18 +139,6 @@ export default {
         type = Object.keys(animations)[Math.floor(Math.random() * Object.keys(animations).length)]
       }
       return animations[type][Math.floor(Math.random() * animations[type].length)]
-    },
-
-    /**
-     * Return spliced skills
-     */
-    splicedSkills (chunkLength) {
-      const chunks = []
-      const skillsCopy = Object.assign([], this.$t('skills'))
-      while (skillsCopy.length > 0) {
-        chunks.push(skillsCopy.splice(0, chunkLength))
-      }
-      return chunks
     }
   }
 }
@@ -225,7 +215,6 @@ export default {
       @include  background-image-opacity;
       background-image: url('/images/boost.svg');
     }
-
   }
 
   #section-socials {
