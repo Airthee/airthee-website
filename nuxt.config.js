@@ -52,11 +52,13 @@ export default {
           {
             code: 'en',
             file: 'en-US.js',
+            iso: 'en-US',
             name: 'English'
           },
           {
             code: 'fr',
             file: 'fr-FR.js',
+            iso: 'fr-FR',
             name: 'Français'
           }
         ],
