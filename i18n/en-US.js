@@ -68,7 +68,8 @@ export default {
         ...globalTranslations.index.sections.skills
       },
       work: {
-        title: 'Mes réalisations'
+        title: 'Mes réalisations',
+        ...globalTranslations.work
       },
       socials: {
         title: 'Social networks',

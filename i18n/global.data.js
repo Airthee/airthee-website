@@ -56,6 +56,12 @@ export default {
             value: 80
           }
         ]
+      },
+      work: {
+        list: [
+          { url: 'https://airthee.com' },
+          { url: 'https://how-long.airthee.com' }
+        ]
       }
     }
   }

@@ -68,7 +68,7 @@
         <h3 :data-aos="randomAOSAnimation()" v-t="'index.sections.work.title'" class="subtitle is-3" />
         <div class="columns is-multiline">
           <div v-for="(work, workIndex) in $t('index.sections.work.list')" :key="workIndex" class="column is-half">
-            {{ work.url }}
+            <OGWork :link="work.url" />
           </div>
         </div>
       </div>
@@ -92,13 +92,15 @@ import AOS from 'aos'
 // import ScrollTo from '@/components/ScrollTo'
 import Timeline from 'timeline-vuejs'
 import RandomCitation from '@/components/RandomCitation'
+import OGWork from '@/components/OGWork'
 import 'aos/dist/aos.css'
 
 export default {
   components: {
     // ScrollTo
     RandomCitation,
-    Timeline
+    Timeline,
+    OGWork
   },
 
   mounted () {
