@@ -2,36 +2,44 @@
   <footer class="footer has-background-dark has-text-light">
     <!-- Github link -->
     <div class="content has-text-centered">
-      <p>
-        {{ $t('footer.githubText') }}
-        <a rel="noreferrer noopener" target="_blank" href="https://github.com/Airthee/airthee-website">Github</a>.
-      </p>
+      <div class="columns is-vcentered">
+        <!-- Copyrights -->
+        <div class="column">
+          Copyright &copy; {{ new Date().getFullYear() }} Raphaël TISON (@Airthee)
+        </div>
 
-      <!-- Menu -->
-      <p>
-        <ul class="links">
-          <li>
-            <nuxt-link :to="localePath('index')" v-t="'footer.homeLabel'" />
-          </li>
-          <li>
-            <nuxt-link :to="localePath('contact')" v-t="'footer.contactLabel'" />
-          </li>
-          <li>
-            <nuxt-link :to="localePath('credits')" v-t="'footer.creditsLabel'" />
-          </li>
-        </ul>
-      </p>
+        <!-- Menu + Lang switch-->
+        <div class="column">
+          <div>
+            <ul class="links">
+              <li>
+                <nuxt-link :to="localePath('index')" v-t="'footer.homeLabel'" />
+              </li>
+              <li>
+                <nuxt-link :to="localePath('contact')" v-t="'footer.contactLabel'" />
+              </li>
+              <li>
+                <nuxt-link :to="localePath('credits')" v-t="'footer.creditsLabel'" />
+              </li>
+            </ul>
+          </div>
+          <div>
+            {{ $t('footer.changeLangText') }} :
+            <nuxt-link
+              v-for="locale in availableLocales"
+              v-html="locale.name"
+              :key="locale.code"
+              :to="switchLocalePath(locale.code)"
+            />
+          </div>
+        </div>
 
-      <!-- Lang switch -->
-      <p>
-        {{ $t('footer.changeLangText') }} :
-        <nuxt-link
-          v-for="locale in availableLocales"
-          v-html="locale.name"
-          :key="locale.code"
-          :to="switchLocalePath(locale.code)"
-        />
-      </p>
+        <!-- Github link -->
+        <div class="column">
+          {{ $t('footer.githubText') }}
+          <a rel="noreferrer noopener" target="_blank" href="https://github.com/Airthee/airthee-website">Github</a>.
+        </div>
+      </div>
     </div>
   </footer>
 </template>
