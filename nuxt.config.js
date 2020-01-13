@@ -9,7 +9,16 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+
+      // Open Graph
+      { name: 'og:title', content: 'Airthee - Welcome to my world' },
+      { name: 'og:type', content: 'website' },
+      { name: 'og:url', content: 'https://airthee.com' },
+
+      // Twitter Card
+      { name: 'twitter:card', content: 'summary' },
+      { name: 'twitter:site', content: '@airthee' },
+      { name: 'twitter:title', content: 'Airthee - Welcome to my world' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -68,8 +77,17 @@ export default {
         baseUrl: 'https://airthee.com',
         seo: false
       }
-    ]
+    ],
+    '@nuxtjs/sitemap' // keep in last
   ],
+
+  /**
+   * Sitemamp configuration
+   */
+  sitemap: {
+    hostname: 'https://airthee.com'
+  },
+
   /*
   ** Build configuration
   */
