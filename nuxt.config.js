@@ -70,6 +70,14 @@ export default {
     ],
     '@nuxtjs/sitemap' // keep in last
   ],
+
+  /**
+   * Sitemamp configuration
+   */
+  sitemap: {
+    hostname: 'https://airthee.com'
+  },
+
   /*
   ** Build configuration
   */
