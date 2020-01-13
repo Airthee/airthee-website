@@ -1,113 +1,118 @@
 <template>
-  <section class="section has-background-white">
-    <div class="container">
-      <h1 v-t="'contact.title'" class="title" />
-
-      <div class="content">
-        <div class="page-description">
+  <div>
+    <section class="hero is-medium is-primary is-bold">
+      <div class="hero-body">
+        <div class="container">
+          <h1 v-t="'contact.title'" class="title" />
           <div v-for="(line, lineIndex) in $t('contact.mainText')" :key="lineIndex" v-html="line" class="container" />
         </div>
-
-        <div v-if="formGlobalNotification !== null" :class="formGlobalNotification.class" class="notification">
-          <button @click="formGlobalNotification = null" class="delete" />
-          {{ formGlobalNotification.message }}
-        </div>
-
-        <form
-          ref="formContact"
-          @submit.prevent="submitForm"
-          method="post"
-        >
-          <div class="field">
-            <label v-t="'contact.formLabels.name'" class="label" />
-            <div class="control has-icons-left">
-              <input
-                v-model="formData.name"
-                :placeholder="$t('contact.formPlaceholders.name')"
-                name="name"
-                required
-                class="input"
-                type="text"
-              >
-              <span class="icon is-small is-left">
-                <i class="fas fa-id-badge" />
-              </span>
-              <p
-                v-if="formErrors.name !== null && formErrors.name.length > 0"
-                v-html="formErrors.name"
-                class="help is-danger"
-              />
-            </div>
-          </div>
-
-          <div class="field">
-            <label v-t="'contact.formLabels.email'" class="label" />
-            <div class="control has-icons-left">
-              <input
-                v-model="formData.email"
-                :placeholder="$t('contact.formPlaceholders.email')"
-                name="email"
-                required
-                class="input"
-                type="email"
-              >
-              <span class="icon is-small is-left">
-                <i class="fas fa-envelope" />
-              </span>
-              <p
-                v-if="formErrors.email !== null && formErrors.email.length > 0"
-                v-html="formErrors.email"
-                class="help is-danger"
-              />
-            </div>
-          </div>
-
-          <div class="field">
-            <label v-t="'contact.formLabels.subject'" class="label" />
-            <div class="control">
-              <input
-                v-model="formData.subject"
-                :placeholder="$t('contact.formPlaceholders.subject')"
-                name="subject"
-                required
-                class="input"
-                type="text"
-              >
-              <p
-                v-if="formErrors.subject !== null && formErrors.subject.length > 0"
-                v-html="formErrors.subject"
-                class="help is-danger"
-              />
-            </div>
-          </div>
-
-          <div class="field">
-            <label v-t="'contact.formLabels.message'" class="label" />
-            <div class="control">
-              <textarea
-                v-model="formData.message"
-                :placeholder="$t('contact.formPlaceholders.message')"
-                name="message"
-                required
-                class="textarea"
-              />
-              <p
-                v-if="formErrors.message !== null && formErrors.message.length > 0"
-                v-html="formErrors.message"
-                class="help is-danger"
-              />
-            </div>
-          </div>
-
-          <div class="field is-grouped">
-            <div class="control">
-              <button v-t="'contact.formLabels.submit'" :disabled="hasError" type="submit" class="button is-link" />
-            </div>
-          </div>
-        </form>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <section class="section has-background-white">
+      <div class="container">
+        <div class="content">
+          <div v-if="formGlobalNotification !== null" :class="formGlobalNotification.class" class="notification">
+            <button @click="formGlobalNotification = null" class="delete" />
+            {{ formGlobalNotification.message }}
+          </div>
+
+          <form
+            ref="formContact"
+            @submit.prevent="submitForm"
+            method="post"
+          >
+            <div class="field">
+              <label v-t="'contact.formLabels.name'" class="label" />
+              <div class="control has-icons-left">
+                <input
+                  v-model="formData.name"
+                  :placeholder="$t('contact.formPlaceholders.name')"
+                  name="name"
+                  required
+                  class="input"
+                  type="text"
+                >
+                <span class="icon is-small is-left">
+                  <i class="fas fa-id-badge" />
+                </span>
+                <p
+                  v-if="formErrors.name !== null && formErrors.name.length > 0"
+                  v-html="formErrors.name"
+                  class="help is-danger"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label v-t="'contact.formLabels.email'" class="label" />
+              <div class="control has-icons-left">
+                <input
+                  v-model="formData.email"
+                  :placeholder="$t('contact.formPlaceholders.email')"
+                  name="email"
+                  required
+                  class="input"
+                  type="email"
+                >
+                <span class="icon is-small is-left">
+                  <i class="fas fa-envelope" />
+                </span>
+                <p
+                  v-if="formErrors.email !== null && formErrors.email.length > 0"
+                  v-html="formErrors.email"
+                  class="help is-danger"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label v-t="'contact.formLabels.subject'" class="label" />
+              <div class="control">
+                <input
+                  v-model="formData.subject"
+                  :placeholder="$t('contact.formPlaceholders.subject')"
+                  name="subject"
+                  required
+                  class="input"
+                  type="text"
+                >
+                <p
+                  v-if="formErrors.subject !== null && formErrors.subject.length > 0"
+                  v-html="formErrors.subject"
+                  class="help is-danger"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label v-t="'contact.formLabels.message'" class="label" />
+              <div class="control">
+                <textarea
+                  v-model="formData.message"
+                  :placeholder="$t('contact.formPlaceholders.message')"
+                  name="message"
+                  required
+                  class="textarea"
+                />
+                <p
+                  v-if="formErrors.message !== null && formErrors.message.length > 0"
+                  v-html="formErrors.message"
+                  class="help is-danger"
+                />
+              </div>
+            </div>
+
+            <div class="field is-grouped">
+              <div class="control">
+                <button v-t="'contact.formLabels.submit'" :disabled="hasError" type="submit" class="button is-link" />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
 </template>
 
 <script>
@@ -200,9 +205,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-  .page-description {
-    margin-bottom: 1em;
-  }
-</style>
