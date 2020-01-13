@@ -148,20 +148,14 @@ export default {
   @import '@/assets/css/variables';
 
   @mixin background-image-opacity {
-    content: "";
-    opacity: 0.2;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;
     background-repeat: no-repeat;
-    background-size: 50%;
+    background-size: contain;
     background-position: 95% 50%;
+    margin: 3em initial;
   }
 
   .main-section {
+    padding: 3em initial;
     min-height: 80vh;
     display: flex;
     justify-content: center;
@@ -183,21 +177,13 @@ export default {
   }
 
   #section-informations {
-    position: relative;
-
-    &::after {
-      @include background-image-opacity;
-      background-image: url('/images/information.svg');
-    }
+    @include background-image-opacity;
+    background-image: url('/images/information.svg');
   }
 
   #section-history {
-    position: relative;
-
-    &::after {
-      @include background-image-opacity;
-      background-image: url('/images/return-to-the-past.svg');
-    }
+    @include background-image-opacity;
+    background-image: url('/images/return-to-the-past.svg');
 
     .timeline {
       max-width: none;
@@ -209,21 +195,13 @@ export default {
   }
 
   #section-skills {
-    position: relative;
-
-    &::after {
-      @include  background-image-opacity;
-      background-image: url('/images/boost.svg');
-    }
+    @include  background-image-opacity;
+    background-image: url('/images/boost.svg');
   }
 
   #section-socials {
-    position: relative;
-
-    &::after {
-      @include  background-image-opacity;
-      background-image: url('/images/networking.svg');
-    }
+    @include  background-image-opacity;
+    background-image: url('/images/networking.svg');
 
     a {
       padding: 10px;
