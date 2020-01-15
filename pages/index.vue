@@ -14,22 +14,22 @@
       </div>
     </section>
 
+    <!-- General informations -->
     <section id="section-informations" class="main-section">
       <div class="container">
         <h3 :data-aos="randomAOSAnimation()" v-t="'home.sections.informations.title'" class="subtitle is-3" />
         <div :data-aos="randomAOSAnimation()" class="card">
           <div class="card-content">
-            <p class="content">
-              <ul>
-                <li v-for="(information, i) in $t('informations')" :key="i" v-html="information" />
-              </ul>
-            </p>
+            <div class="content">
+              <div v-for="(information, i) in $t('informations')" :key="i" v-html="information" />
+            </div>
           </div>
         </div>
       </div>
       <!-- <scroll-to target="#section-skills" /> -->
     </section>
 
+    <!-- History -->
     <section id="section-history" class="main-section">
       <div class="container">
         <h3 :data-aos="randomAOSAnimation()" v-t="'home.sections.history.title'" class="subtitle is-3" />
@@ -41,11 +41,12 @@
       </div>
     </section>
 
+    <!-- Skills -->
     <section id="section-skills" class="main-section">
       <div class="container">
         <h3 :data-aos="randomAOSAnimation()" v-t="'home.sections.skills.title'" class="subtitle is-3" />
         <div class="columns is-multiline">
-          <div v-for="(skill, skillIndex) in $t('skills')" :key="skillIndex" class="column is-one-third">
+          <div v-for="(skill, skillIndex) in displayedSkills" :key="skillIndex" class="column is-one-third">
             <div :data-aos="randomAOSAnimation()">
               <div class="card">
                 <header class="card-header">
@@ -60,9 +61,19 @@
             </div>
           </div>
         </div>
+        <div class="has-text-centered">
+          <button
+            :data-aos="randomAOSAnimation('fade')"
+            v-if="hiddenSkills.length > 0"
+            v-t="'home.sections.skills.showMore'"
+            @click="displayMoreSkills(3)"
+            class="button is-primary is-light"
+          />
+        </div>
       </div>
     </section>
 
+    <!-- Social networks -->
     <section id="section-socials" class="main-section">
       <div class="container">
         <h3 :data-aos="randomAOSAnimation()" v-t="'home.sections.socials.title'" class="subtitle is-3" />
@@ -90,6 +101,20 @@ export default {
     Timeline
   },
 
+  data () {
+    return {
+      hiddenSkills: [],
+      displayedSkills: []
+    }
+  },
+
+  created () {
+    // Display 5 first skills
+    const skills = this.$t('skills')
+    this.displayedSkills = skills.splice(0, 5)
+    this.hiddenSkills = skills
+  },
+
   mounted () {
     // AOS initialisation
     AOS.init({
@@ -99,46 +124,14 @@ export default {
 
   methods: {
     /**
-     * Method picking a random AOS class
+     * Display X more skills
      */
-    randomAOSAnimation (type) {
-      const animations = {
-        fade: [
-          'fade-up',
-          'fade-down',
-          'fade-right',
-          'fade-left',
-          'fade-up-right',
-          'fade-up-left',
-          'fade-down-right',
-          'fade-down-left'
-        ],
-        flip: [
-          'flip-left',
-          'flip-right',
-          'flip-up',
-          'flip-down'
-        ],
-        zoom: [
-          'zoom-in',
-          'zoom-in-up',
-          'zoom-in-down',
-          'zoom-in-left',
-          'zoom-in-right',
-          'zoom-out',
-          'zoom-out-up',
-          'zoom-out-down',
-          'zoom-out-left',
-          'zoom-out-right'
-        ]
+    displayMoreSkills (number) {
+      if (this.hiddenSkills.length > 0) {
+        this.hiddenSkills
+          .splice(0, number)
+          .forEach((skill) => { this.displayedSkills.push(skill) })
       }
-
-      // If a type is specified, select a class for this type
-      // else, select a random type
-      if (type === undefined) {
-        type = Object.keys(animations)[Math.floor(Math.random() * Object.keys(animations).length)]
-      }
-      return animations[type][Math.floor(Math.random() * animations[type].length)]
     }
   }
 }
