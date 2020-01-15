@@ -21,13 +21,19 @@ import Footer from '@/components/Footer'
 export default {
   head () {
     const i18nSeo = this.$nuxtI18nSeo()
+    const metaDescription = this.$t('app.meta.description')
+
     return {
       htmlAttrs: {
         // Add some attrs here...
         ...i18nSeo.htmlAttrs
       },
       meta: [
-        // Add some meta here...
+        { name: 'description', hid: 'description', content: metaDescription },
+        // Open Graph
+        { name: 'og:description', content: metaDescription },
+        // Twitter Card
+        { name: 'twitter:description', content: metaDescription },
         ...i18nSeo.meta
       ],
       link: [
