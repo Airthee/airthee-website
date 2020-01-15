@@ -61,13 +61,14 @@
             </div>
           </div>
         </div>
-        <div>
+        <div class="has-text-centered">
           <button
-            v-if="displayedSkills.length < skills.length"
+            :data-aos="randomAOSAnimation('fade')"
+            v-if="hiddenSkills.length > 0"
+            v-t="'home.sections.skills.showMore'"
             @click="displayMoreSkills(3)"
-          >
-            Voir plus
-          </button>
+            class="button is-primary is-light"
+          />
         </div>
       </div>
     </section>
@@ -102,22 +103,16 @@ export default {
 
   data () {
     return {
-      skills: []
-    }
-  },
-
-  computed: {
-    displayedSkills () {
-      return this.skills.filter(s => s.display === true)
+      hiddenSkills: [],
+      displayedSkills: []
     }
   },
 
   created () {
     // Display 5 first skills
-    this.skills = this.$t('skills').map((s, index) => {
-      s.display = index < 6
-      return s
-    })
+    const skills = this.$t('skills')
+    this.displayedSkills = skills.splice(0, 5)
+    this.hiddenSkills = skills
   },
 
   mounted () {
@@ -129,60 +124,14 @@ export default {
 
   methods: {
     /**
-     * Method picking a random AOS class
-     */
-    randomAOSAnimation (type) {
-      const animations = {
-        fade: [
-          'fade-up',
-          'fade-down',
-          'fade-right',
-          'fade-left',
-          'fade-up-right',
-          'fade-up-left',
-          'fade-down-right',
-          'fade-down-left'
-        ],
-        flip: [
-          'flip-left',
-          'flip-right',
-          'flip-up',
-          'flip-down'
-        ],
-        zoom: [
-          'zoom-in',
-          'zoom-in-up',
-          'zoom-in-down',
-          'zoom-in-left',
-          'zoom-in-right',
-          'zoom-out',
-          'zoom-out-up',
-          'zoom-out-down',
-          'zoom-out-left',
-          'zoom-out-right'
-        ]
-      }
-
-      // If a type is specified, select a class for this type
-      // else, select a random type
-      if (type === undefined) {
-        type = Object.keys(animations)[Math.floor(Math.random() * Object.keys(animations).length)]
-      }
-      return animations[type][Math.floor(Math.random() * animations[type].length)]
-    },
-
-    /**
      * Display X more skills
      */
     displayMoreSkills (number) {
-      let skillsAdded = 0
-      this.skills.forEach((s) => {
-        if (skillsAdded === number) { return false }
-        if (s.display === false) {
-          s.display = true
-          skillsAdded++
-        }
-      })
+      if (this.hiddenSkills.length > 0) {
+        this.hiddenSkills
+          .splice(0, number)
+          .forEach((skill) => { this.displayedSkills.push(skill) })
+      }
     }
   }
 }

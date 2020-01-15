@@ -15,7 +15,8 @@ export default {
         title: 'Historique'
       },
       skills: {
-        title: 'Compétences'
+        title: 'Compétences',
+        showMore: 'Afficher plus'
       },
       socials: {
         title: 'Réseaux sociaux'
