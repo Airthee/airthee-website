@@ -42,7 +42,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/aos/main.js'
+    '~/plugins/aos/main.js',
+    '~/plugins/i18n/main.js'
   ],
   /*
   ** Nuxt.js dev-modules
