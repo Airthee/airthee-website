@@ -16,5 +16,5 @@
     Access-Control-Allow-Origin = "*"
     X-Frame-Options = "SAMEORIGIN"
     X-Content-Type-Options = "nosniff"
-    Content-Security-Policy = "default-src 'self'; default-src https://*.airthee.com:*; script-src https://*.fontawesome.com"
+    Content-Security-Policy = "default-src 'self'; default-src https://*.airthee.com:*; default-src https://*.netlify.com; script-src https://*.fontawesome.com"
     Referrer-Policy = "strict-origin-when-cross-origin"
