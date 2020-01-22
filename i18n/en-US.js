@@ -53,7 +53,7 @@ export default {
     ]
   },
   footer: {
-    changeLangText: 'Changer la langue',
+    changeLangText: 'Change language',
     homeLabel: 'Home',
     contactLabel: 'Contact',
     creditsLabel: 'Credits',
