@@ -48,7 +48,7 @@ export default {
   credits: {
     title: 'Crédits',
     mainText: [
-      'Je dois vous l\'adrettre, je suis pas un bon dessinateur... C\'est pouquoi j\'ai besoin de ressources extérieures pour vous offrir la meilleure expérience possible.',
+      'Je dois vous l\'admettre, je suis pas un bon dessinateur... C\'est pouquoi j\'ai besoin de ressources extérieures pour vous offrir la meilleure expérience possible.',
       'Alors juste un grand "Merci" à tous ces artistes !'
     ]
   },
