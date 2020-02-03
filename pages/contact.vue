@@ -111,6 +111,10 @@
           </form>
         </div>
       </div>
+      <small>This site is protected by reCAPTCHA and the Google
+        <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+        <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+      </small>
     </section>
   </div>
 </template>
@@ -165,8 +169,20 @@ export default {
     }
   },
 
+  mounted () {
+    this.$recaptcha.init()
+  },
+
   methods: {
     submitForm () {
+      this.$recaptcha.execute('login')
+        .then((token) => {
+          console.log('ReCaptcha token:', token)
+        })
+        .catch((error) => {
+          console.log('Login error:', error)
+        })
+
       // If no error, we can submit
       // Else, errors are already displayed
       if (!this.hasError) {

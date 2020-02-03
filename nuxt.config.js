@@ -1,6 +1,9 @@
 
+require('dotenv').config()
+
 export default {
   mode: 'spa',
+
   /*
   ** Headers of the page
   */
@@ -50,7 +53,8 @@ export default {
   */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/dotenv'
   ],
   /*
   ** Nuxt.js modules
@@ -78,6 +82,14 @@ export default {
         langDir: 'i18n/',
         baseUrl: 'https://airthee.com',
         seo: false
+      }
+    ],
+    [
+      '@nuxtjs/recaptcha', {
+        hideBadge: false, // Hide badge element (v3 & v2 via size=invisible)
+        siteKey: process.env.RECAPTCHA_KEY, // Site key for requests
+        version: 3, // Version
+        size: 'normal' // Size: 'compact', 'normal', 'invisible' (v2)
       }
     ],
     '@nuxtjs/sitemap' // keep in last
