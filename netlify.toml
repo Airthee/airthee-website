@@ -9,6 +9,9 @@
   # been specified, include it in the publish directory path.
   publish = "dist/"
 
+  # Directory with the serverless Lambda functions to deploy to AWS.
+  functions = "./functions"
+
 [[headers]]
   # Define which paths this specific [[headers]] block will cover.
   for = "/*"
