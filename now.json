@@ -1,6 +1,7 @@
 {
   "env": {
     "MJ_APIKEY_PUBLIC": "@mj_apikey_public",
-    "MJ_APIKEY_PRIVATE": "@mj_apikey_private"
+    "MJ_APIKEY_PRIVATE": "@mj_apikey_private",
+    "CONTACT_EMAIL": "@contact_email"
   }
 }
