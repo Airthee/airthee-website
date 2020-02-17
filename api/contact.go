@@ -16,7 +16,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	// ...
 
 	// Get contact infos
-	name, email, subject, message, err := parseParams(r)
+	name, email, subject, message, err := getFormData(r)
 	if err != nil {
 		fmt.Fprintf(w, err.Error())
 	}
@@ -25,34 +25,19 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Name : %v\n", name)
 	fmt.Fprintf(w, "Message : %v\n", message)
 	fmt.Fprintf(w, "Email : %v\n", email)
-	sendMail(subject, name, message, email)
+	// sendMail(subject, name, message, email)
 }
 
-func parseParams(r *http.Request) (name, email, subject, message string, err error) {
-	name, err = urlParam(r, "name")
-	if err != nil || len(name) == 0 {
-		err = fmt.Errorf("Param name invalid")
+func getFormData(r *http.Request) (name, email, subject, message string, err error) {
+	err = r.ParseForm()
+	if err != nil {
+		err = fmt.Errorf("ParseForm() err: %v", err)
 		return
 	}
-
-	email, err = urlParam(r, "email")
-	if err != nil || len(email) == 0 {
-		err = fmt.Errorf("Param email invalid")
-		return
-	}
-
-	subject, err = urlParam(r, "subject")
-	if err != nil || len(subject) == 0 {
-		err = fmt.Errorf("Param subject invalid")
-		return
-	}
-
-	message, err = urlParam(r, "message")
-	if err != nil || len(message) == 0 {
-		err = fmt.Errorf("Param message invalid")
-		return
-	}
-
+	name = r.FormValue("name")
+	email = r.FormValue("email")
+	subject = r.FormValue("subject")
+	message = r.FormValue("message")
 	return
 }
 
@@ -67,6 +52,7 @@ func urlParam(r *http.Request, name string) (string, error) {
 func sendMail(subject, name, message, email string) {
 	mailjetClient := mailjet.NewMailjetClient(os.Getenv("MJ_APIKEY_PUBLIC"), os.Getenv("MJ_APIKEY_PRIVATE"))
 	messagesInfo := []mailjet.InfoMessagesV31{
+		// Mail to admin
 		mailjet.InfoMessagesV31{
 			From: &mailjet.RecipientV31{
 				Email: "contact@airthee.com",
@@ -92,6 +78,8 @@ func sendMail(subject, name, message, email string) {
 				"contact_email":   email,
 			},
 		},
+		// TODO : information mail for the sender
+
 	}
 	messages := mailjet.MessagesV31{Info: messagesInfo}
 	res, err := mailjetClient.SendMailV31(&messages)

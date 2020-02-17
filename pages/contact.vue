@@ -122,7 +122,6 @@ export default {
   data () {
     return {
       formData: {
-        'form-name': 'contact',
         name: '',
         email: '',
         subject: '',
@@ -171,7 +170,7 @@ export default {
       // Else, errors are already displayed
       if (!this.hasError) {
         // Retrive form action
-        const formAction = this.$refs.formContact.action
+        const formAction = `//${window.location.host}/api/contact`
         // console.log(this.formData) // Données du formulaire
 
         // Serialize form
