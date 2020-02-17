@@ -60,7 +60,7 @@ func sendMail(subject, name, message, email string) {
 			},
 			To: &mailjet.RecipientsV31{
 				mailjet.RecipientV31{
-					Email: os.Getenv("CONTACT_EMAIL"),
+					Email: "contact@airthee.com",
 					Name:  "",
 				},
 			},
@@ -78,8 +78,25 @@ func sendMail(subject, name, message, email string) {
 				"contact_email":   email,
 			},
 		},
-		// TODO : information mail for the sender
-
+		// mail for the sender
+		mailjet.InfoMessagesV31{
+			From: &mailjet.RecipientV31{
+				Email: "contact@airthee.com",
+				Name:  "Contact - Airthee",
+			},
+			To: &mailjet.RecipientsV31{
+				mailjet.RecipientV31{
+					Email: email,
+					Name:  name,
+				},
+			},
+			TemplateID:       1240402,
+			TemplateLanguage: true,
+			Subject:          "Confirmation de votre demande de contact",
+			Variables: map[string]interface{}{
+				"message": message,
+			},
+		},
 	}
 	messages := mailjet.MessagesV31{Info: messagesInfo}
 	res, err := mailjetClient.SendMailV31(&messages)
