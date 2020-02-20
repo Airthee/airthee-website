@@ -105,7 +105,13 @@
 
             <div class="field is-grouped">
               <div class="control">
-                <button v-t="'contact.formLabels.submit'" :disabled="hasError" type="submit" class="button is-link" />
+                <button
+                  v-t="'contact.formLabels.submit'"
+                  :disabled="hasError || submitDisabled"
+                  :title="submitDisabled ? 'Disabled for 30 seconds' : ''"
+                  type="submit"
+                  class="button is-link"
+                />
               </div>
             </div>
           </form>
@@ -121,6 +127,7 @@ import axios from 'axios'
 export default {
   data () {
     return {
+      submitDisabled: false,
       formData: {
         name: '',
         email: '',
@@ -166,6 +173,12 @@ export default {
 
   methods: {
     submitForm () {
+      // Disable submit button for 30 seconds
+      this.submitDisabled = true
+      setTimeout(() => {
+        this.submitDisabled = false
+      }, 30000)
+
       // If no error, we can submit
       // Else, errors are already displayed
       if (!this.hasError) {
