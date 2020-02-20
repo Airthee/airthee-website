@@ -20,12 +20,8 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Fprintf(w, err.Error())
 	}
-
-	fmt.Fprintf(w, "Subject : %v\n", subject)
-	fmt.Fprintf(w, "Name : %v\n", name)
-	fmt.Fprintf(w, "Message : %v\n", message)
-	fmt.Fprintf(w, "Email : %v\n", email)
-	// sendMail(subject, name, message, email)
+	sendMail(subject, name, message, email)
+	fmt.Fprintf(w, "OK\n")
 }
 
 func getFormData(r *http.Request) (name, email, subject, message string, err error) {
