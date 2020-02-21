@@ -5,30 +5,43 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 
+	"github.com/Airthee/go-recaptcha"
 	mailjet "github.com/mailjet/mailjet-apiv3-go"
 )
 
 // Handler is the main function exported to Serverless service
 func Handler(w http.ResponseWriter, r *http.Request) {
-	// Test captcha
-	// TODO
-	// ...
-
-	// Get contact infos
-	name, email, subject, message, err := getFormData(r)
+	// Get all form data
+	name, email, subject, message, recaptchaResponse, err := getFormData(r)
 	if err != nil {
 		fmt.Fprintf(w, err.Error())
+		return
 	}
 
-	fmt.Fprintf(w, "Subject : %v\n", subject)
-	fmt.Fprintf(w, "Name : %v\n", name)
-	fmt.Fprintf(w, "Message : %v\n", message)
-	fmt.Fprintf(w, "Email : %v\n", email)
-	// sendMail(subject, name, message, email)
+	// Init ReCaptcha and verify the response
+	// (example: https://github.com/Airthee/go-recaptcha/blob/master/example/example.go)
+	recaptcha.Init(os.Getenv("RECAPTCHA_PRIVATE_KEY"))
+	host := strings.Split(r.Host, ":")[0]
+	result, err := recaptcha.Check(host, recaptchaResponse)
+	if err != nil {
+		fmt.Fprintf(w, "Recaptcha server error : %v\n", err.Error())
+		return
+	}
+
+	// The score must be at least 0.85
+	// If not, we refuse the request
+	if !result.Success || result.Score < 0.85 {
+		fmt.Fprintf(w, "Wrong ReCaptcha score")
+		return
+	}
+
+	// If everything is ok, we can send the mail
+	sendMail(subject, name, message, email)
 }
 
-func getFormData(r *http.Request) (name, email, subject, message string, err error) {
+func getFormData(r *http.Request) (name, email, subject, message, recaptchaResponse string, err error) {
 	err = r.ParseForm()
 	if err != nil {
 		err = fmt.Errorf("ParseForm() err: %v", err)
@@ -38,6 +51,7 @@ func getFormData(r *http.Request) (name, email, subject, message string, err err
 	email = r.FormValue("email")
 	subject = r.FormValue("subject")
 	message = r.FormValue("message")
+	recaptchaResponse = r.FormValue("g-recaptcha-response")
 	return
 }
 

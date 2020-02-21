@@ -2,6 +2,8 @@
   "env": {
     "MJ_APIKEY_PUBLIC": "@mj_apikey_public",
     "MJ_APIKEY_PRIVATE": "@mj_apikey_private",
-    "CONTACT_EMAIL": "@contact_email"
+    "CONTACT_EMAIL": "@contact_email",
+    "RECAPTCHA_SITE_KEY": "@recaptcha_site_key",
+    "RECAPTCHA_PRIVATE_KEY": "@recaptcha_private_key"
   }
 }

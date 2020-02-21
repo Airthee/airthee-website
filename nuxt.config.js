@@ -1,3 +1,4 @@
+require('dotenv').config()
 
 export default {
   mode: 'spa',
@@ -49,6 +50,7 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
+    '@nuxtjs/dotenv',
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module'
   ],
@@ -78,6 +80,13 @@ export default {
         langDir: 'i18n/',
         baseUrl: 'https://airthee.com',
         seo: false
+      }
+    ],
+    [
+      '@nuxtjs/recaptcha', {
+        hideBadge: false,
+        siteKey: process.env.RECAPTCHA_SITE_KEY,
+        version: 3
       }
     ],
     '@nuxtjs/sitemap' // keep in last

@@ -132,7 +132,8 @@ export default {
         name: '',
         email: '',
         subject: '',
-        message: ''
+        message: '',
+        'g-recaptcha-response': ''
       },
       formErrors: {
         name: null,
@@ -171,6 +172,10 @@ export default {
     }
   },
 
+  async mounted () {
+    await this.$recaptcha.init()
+  },
+
   methods: {
     submitForm () {
       // Disable submit button for 30 seconds
@@ -182,28 +187,28 @@ export default {
       // If no error, we can submit
       // Else, errors are already displayed
       if (!this.hasError) {
-        // Retrive form action
-        const formAction = `//${window.location.host}/api/contact`
-        // console.log(this.formData) // Données du formulaire
+        this.$recaptcha.execute('homepage').then((token) => {
+          this.formData['g-recaptcha-response'] = token
 
-        // Serialize form
-        // Do post
-        const axiosConfig = {
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-        }
-        axios.post(formAction, this.encodeFormValues(), axiosConfig)
-          .then(() => {
-            this.formGlobalNotification = {
-              message: 'Message successfully sent',
-              class: 'is-success'
-            }
-          })
-          .catch((error) => {
-            this.formGlobalNotification = {
-              message: error,
-              class: 'is-danger'
-            }
-          })
+          // Retrieve form action
+          // Configure axios request
+          const formAction = `//${window.location.host}/api/contact`
+          const axiosConfig = {
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+          }
+          return axios.post(formAction, this.encodeFormValues(), axiosConfig)
+        }).then((response) => {
+          const errorMessage = response.data
+          this.formGlobalNotification = {
+            message: errorMessage || 'Message successfully sent',
+            class: errorMessage ? 'is-danger' : 'is-success'
+          }
+        }).catch((error) => {
+          this.formGlobalNotification = {
+            message: error,
+            class: 'is-danger'
+          }
+        })
       }
     },
 
