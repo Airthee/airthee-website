@@ -94,8 +94,6 @@ import Timeline from 'timeline-vuejs'
 import RandomCitation from '@/components/RandomCitation'
 import 'aos/dist/aos.css'
 
-console.log(process.env.RECAPTCHA_SITE_KEY)
-
 export default {
   components: {
     // ScrollTo

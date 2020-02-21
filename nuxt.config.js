@@ -1,5 +1,7 @@
 require('dotenv').config()
 
+console.log(process.env.RECAPTCHA_SITE_KEY)
+
 export default {
   mode: 'spa',
   /*
