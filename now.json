@@ -1,13 +1,14 @@
 {
   "version": 2,
-  "builds": [
-    { "src": "package.json", "use": "@now/static-build" }
-  ],
+  "build": {
+    "env": {
+      "RECAPTCHA_SITE_KEY": "@recaptcha_site_key"
+    }
+  },
   "env": {
     "MJ_APIKEY_PUBLIC": "@mj_apikey_public",
     "MJ_APIKEY_PRIVATE": "@mj_apikey_private",
     "CONTACT_EMAIL": "@contact_email",
-    "NUXT_ENV_RECAPTCHA_SITE_KEY": "@recaptcha_site_key",
     "RECAPTCHA_PRIVATE_KEY": "@recaptcha_private_key"
   }
 }
