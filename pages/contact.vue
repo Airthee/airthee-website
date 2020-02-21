@@ -105,7 +105,13 @@
 
             <div class="field is-grouped">
               <div class="control">
-                <button v-t="'contact.formLabels.submit'" :disabled="hasError" type="submit" class="button is-link" />
+                <button
+                  v-t="'contact.formLabels.submit'"
+                  :disabled="hasError || submitDisabled"
+                  :title="submitDisabled ? 'Disabled for 30 seconds' : ''"
+                  type="submit"
+                  class="button is-link"
+                />
               </div>
             </div>
           </form>
@@ -121,12 +127,13 @@ import axios from 'axios'
 export default {
   data () {
     return {
+      submitDisabled: false,
       formData: {
-        'form-name': 'contact',
         name: '',
         email: '',
         subject: '',
-        message: ''
+        message: '',
+        'g-recaptcha-response': ''
       },
       formErrors: {
         name: null,
@@ -165,33 +172,43 @@ export default {
     }
   },
 
+  async mounted () {
+    await this.$recaptcha.init()
+  },
+
   methods: {
     submitForm () {
+      // Disable submit button for 30 seconds
+      this.submitDisabled = true
+      setTimeout(() => {
+        this.submitDisabled = false
+      }, 30000)
+
       // If no error, we can submit
       // Else, errors are already displayed
       if (!this.hasError) {
-        // Retrive form action
-        const formAction = this.$refs.formContact.action
-        // console.log(this.formData) // Données du formulaire
+        this.$recaptcha.execute('homepage').then((token) => {
+          this.formData['g-recaptcha-response'] = token
 
-        // Serialize form
-        // Do post
-        const axiosConfig = {
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-        }
-        axios.post(formAction, this.encodeFormValues(), axiosConfig)
-          .then(() => {
-            this.formGlobalNotification = {
-              message: 'Message successfully sent',
-              class: 'is-success'
-            }
-          })
-          .catch((error) => {
-            this.formGlobalNotification = {
-              message: error,
-              class: 'is-danger'
-            }
-          })
+          // Retrieve form action
+          // Configure axios request
+          const formAction = `//${window.location.host}/api/contact`
+          const axiosConfig = {
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+          }
+          return axios.post(formAction, this.encodeFormValues(), axiosConfig)
+        }).then((response) => {
+          const errorMessage = response.data
+          this.formGlobalNotification = {
+            message: errorMessage || 'Message successfully sent',
+            class: errorMessage ? 'is-danger' : 'is-success'
+          }
+        }).catch((error) => {
+          this.formGlobalNotification = {
+            message: error,
+            class: 'is-danger'
+          }
+        })
       }
     },
 

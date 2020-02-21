@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "build": {
+    "env": {
+      "RECAPTCHA_SITE_KEY": "@recaptcha_site_key"
+    }
+  },
+  "env": {
+    "MJ_APIKEY_PUBLIC": "@mj_apikey_public",
+    "MJ_APIKEY_PRIVATE": "@mj_apikey_private",
+    "CONTACT_EMAIL": "@contact_email",
+    "RECAPTCHA_PRIVATE_KEY": "@recaptcha_private_key"
+  }
+}
