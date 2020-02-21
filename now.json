@@ -1,4 +1,8 @@
 {
+  "version": 2,
+  "builds": [
+    { "src": "package.json", "use": "@now/static-build" }
+  ],
   "env": {
     "MJ_APIKEY_PUBLIC": "@mj_apikey_public",
     "MJ_APIKEY_PRIVATE": "@mj_apikey_private",
