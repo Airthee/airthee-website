@@ -2,6 +2,7 @@ package handler
 
 import (
 	"fmt"
+	"html"
 	"log"
 	"net/http"
 	"os"
@@ -47,10 +48,10 @@ func getFormData(r *http.Request) (name, email, subject, message, recaptchaRespo
 		err = fmt.Errorf("ParseForm() err: %v", err)
 		return
 	}
-	name = r.FormValue("name")
+	name = html.EscapeString(r.FormValue("name"))
 	email = r.FormValue("email")
-	subject = r.FormValue("subject")
-	message = r.FormValue("message")
+	subject = html.EscapeString(r.FormValue("subject"))
+	message = html.EscapeString(r.FormValue("message"))
 	recaptchaResponse = r.FormValue("g-recaptcha-response")
 	return
 }
