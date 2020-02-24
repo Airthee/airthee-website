@@ -41,20 +41,37 @@
       </div>
     </section>
 
+    <section>
+      <vue-glide>
+        <vue-glide-slide v-for="i in 10" :key="i">
+          Slide {{ i }}
+        </vue-glide-slide>
+        <template slot="control">
+          <button data-glide-dir="<">
+            prev
+          </button>
+          <button data-glide-dir=">">
+            next
+          </button>
+        </template>
+      </vue-glide>
+    </section>
+
     <!-- Skills -->
     <section id="section-skills" class="main-section">
       <div class="container">
         <h3 :data-aos="randomAOSAnimation()" v-t="'home.sections.skills.title'" class="subtitle is-3" />
-        <div class="columns is-multiline">
-          <div v-for="(skill, skillIndex) in displayedSkills" :key="skillIndex" class="column is-one-third">
+        <div class="columns">
+          <div v-for="(category, categoryIndex) in $t('skills')" :key="categoryIndex" class="column">
             <div :data-aos="randomAOSAnimation()">
               <div class="card">
                 <header class="card-header">
-                  <p v-html="skill.name" class="card-header-title" />
+                  <p v-html="category.name" class="card-header-title" />
                 </header>
-                <div class="card-content">
+                <div v-for="(item, itemIndex) in category.items" :key="itemIndex" class="card-content">
                   <div class="content">
-                    <progress v-html="skill.value" :value="skill.value" class="progress is-primary" max="100" />
+                    {{ item.name }}
+                    <progress v-html="item.value" :value="item.value" class="progress is-primary" max="100" />
                   </div>
                 </div>
               </div>
@@ -106,13 +123,6 @@ export default {
       hiddenSkills: [],
       displayedSkills: []
     }
-  },
-
-  created () {
-    // Display 5 first skills
-    const skills = this.$t('skills')
-    this.displayedSkills = skills.splice(0, 5)
-    this.hiddenSkills = skills
   },
 
   mounted () {

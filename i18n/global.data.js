@@ -1,56 +1,118 @@
 export default {
   skills: [
     {
-      name: 'NodeJS',
-      value: 70
+      name: 'Frontend',
+      items: [
+        {
+          name: 'VueJS',
+          value: 80
+        },
+        {
+          name: 'ReactJS',
+          value: 30
+        },
+        {
+          name: 'Twig',
+          value: 70
+        },
+        {
+          name: 'HTML / CSS',
+          value: 80
+        },
+        {
+          name: 'jQuery',
+          value: 80
+        }
+      ]
     },
     {
-      name: 'PHP',
-      value: 90
+      name: 'Backend',
+      items: [
+        {
+          name: 'NodeJS',
+          value: 70
+        },
+        {
+          name: 'PHP',
+          value: 90
+        },
+        {
+          name: 'Go',
+          value: 10
+        }
+      ]
     },
     {
-      name: 'Symfony',
-      value: 70
+      name: 'Frameworks',
+      items: [
+        {
+          name: 'Symfony',
+          value: 70
+        },
+        {
+          name: 'Laravel',
+          value: 60
+        },
+        {
+          name: 'NuxtJS',
+          value: 80
+        }
+      ]
     },
     {
-      name: 'GraphQL',
-      value: '40'
+      name: 'Cloud',
+      items: [
+        {
+          name: 'GCP',
+          value: 60
+        },
+        {
+          name: 'AWS',
+          value: 10
+        },
+        {
+          name: 'Netlify',
+          value: 70
+        },
+        {
+          name: 'Zeit (Now)',
+          value: 60
+        }
+      ]
     },
     {
-      name: 'Laravel',
-      value: 60
+      name: 'Databases',
+      items: [
+        {
+          name: 'GraphQL',
+          value: 40
+        },
+        {
+          name: 'MySQL',
+          value: 80
+        },
+        {
+          name: 'PostgreSQL',
+          value: 65
+        }
+      ]
     },
     {
-      name: 'VueJS',
-      value: 60
-    },
-    {
-      name: 'jQuery',
-      value: 80
-    },
-    {
-      name: 'SQL',
-      value: 70
-    },
-    {
-      name: 'Python',
-      value: 50
-    },
-    {
-      name: 'Git',
-      value: 90
-    },
-    {
-      name: 'Java',
-      value: 30
-    },
-    {
-      name: 'C / C++',
-      value: 50
-    },
-    {
-      name: 'HTML / CSS',
-      value: 80
+      name: 'Dev tools',
+      items: [
+        {
+          name: 'Git',
+          value: 90
+        },
+        {
+          name: 'Github',
+          value: 80
+        },
+        {
+          name: 'Gitlab',
+          value: 65
+        }
+      ]
     }
   ]
 }

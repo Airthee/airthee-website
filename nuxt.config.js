@@ -37,14 +37,15 @@ export default {
   */
   css: [
     '@/assets/css/style.scss',
-    './node_modules/timeline-vuejs/dist/timeline-vuejs.css'
+    'timeline-vuejs/dist/timeline-vuejs.css'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
     '~/plugins/aos/main.js',
-    '~/plugins/i18n/main.js'
+    '~/plugins/i18n/main.js',
+    '~/plugins/vue-glide-js/main.js'
   ],
   /*
   ** Nuxt.js dev-modules
