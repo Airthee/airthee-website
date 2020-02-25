@@ -41,28 +41,12 @@
       </div>
     </section>
 
-    <section>
-      <vue-glide>
-        <vue-glide-slide v-for="i in 10" :key="i">
-          Slide {{ i }}
-        </vue-glide-slide>
-        <template slot="control">
-          <button data-glide-dir="<">
-            prev
-          </button>
-          <button data-glide-dir=">">
-            next
-          </button>
-        </template>
-      </vue-glide>
-    </section>
-
     <!-- Skills -->
     <section id="section-skills" class="main-section">
       <div class="container">
         <h3 :data-aos="randomAOSAnimation()" v-t="'home.sections.skills.title'" class="subtitle is-3" />
-        <div class="columns">
-          <div v-for="(category, categoryIndex) in $t('skills')" :key="categoryIndex" class="column">
+        <vue-glide>
+          <vue-glide-slide v-for="(category, categoryIndex) in $t('skills')" :key="categoryIndex">
             <div :data-aos="randomAOSAnimation()">
               <div class="card">
                 <header class="card-header">
@@ -76,17 +60,16 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="has-text-centered">
-          <button
-            :data-aos="randomAOSAnimation('fade')"
-            v-if="hiddenSkills.length > 0"
-            v-t="'home.sections.skills.showMore'"
-            @click="displayMoreSkills(3)"
-            class="button is-primary is-light"
-          />
-        </div>
+          </vue-glide-slide>
+          <template slot="control">
+            <a href="javascript:void(0)" class="button-prev" data-glide-dir="<">
+              <i class="fas fa-angle-left fa-3x" />
+            </a>
+            <a href="javascript:void(0)" class="button-next" data-glide-dir=">">
+              <i class="fas fa-angle-right fa-3x" />
+            </a>
+          </template>
+        </vue-glide>
       </div>
     </section>
 
@@ -199,6 +182,28 @@ export default {
   #section-skills {
     @include  background-image-opacity;
     background-image: url('/images/boost.svg');
+
+    @mixin button-nav {
+      position: absolute;
+      top: 50%;
+      cursor: pointer;
+    }
+
+    .glide {
+      position: relative;
+
+      .button-prev {
+        @include button-nav();
+        transform: translate(-100%, 50%);
+        left: -10px;
+      }
+
+      .button-next {
+        @include button-nav();
+        transform: translate(100%, 50%);
+        right: -10px;
+      }
+    }
   }
 
   #section-socials {
