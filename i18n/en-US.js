@@ -62,11 +62,26 @@ export default {
   mainPicture: {
     alt: 'Picture of me at the New York Brooklyn Bridge'
   },
-  informations: [
-    'Raphaël TISON (@Airthee)',
-    '23 years old',
-    'Vendée, France'
-  ],
+  informations: `
+    <p>
+      My name is <b>Raphaël TISON (@Airthee)</b>, I'm <b>23 years old</b> and I live in Vendée, France.<br/>
+      Since very young, I'm <b>passionate about computers</b>, more specifically <b>software development</b>.
+    <p>
+      Apart from my very specialized academic background in this field, I like to train myself on <b>new technologies</b> 
+      and <b>new languages</b>. In addition to being <b>passionate and self-taught</b>, I'm also very <b>curious</b>.
+      Indeed, I'm very interested in new developments in the field, without hesitating to <b>go deeper</b> into the subject
+      if it interests me.
+    <p>
+    <p>
+      On the professional side, I know how to <b>integrate</b> into an existing team and I'm <b>able to make proposals</b>
+      if necessary.
+    </p>
+    <p>
+      Apart from computers, I also have other passions, such as <b>motorcycle rides</b> with my friends.
+      I also like to relax in from of <b>series</b>, among my favorites we can find <i>Breaking Bad</i>,
+      <i>Mr Robot</i> or <i>La Casa de Papel</i>. Finally, I also practice <b>Thai boxing (Muay Thai)</b> since a fiew years.
+    </p>
+`,
   timeline: [
     {
       title: 'EPSI (Nantes, 44200, France)',

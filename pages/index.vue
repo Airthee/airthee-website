@@ -20,9 +20,7 @@
         <h3 :data-aos="randomAOSAnimation()" v-t="'home.sections.informations.title'" class="subtitle is-3" />
         <div :data-aos="randomAOSAnimation()" class="card">
           <div class="card-content">
-            <div class="content">
-              <div v-for="(information, i) in $t('informations')" :key="i" v-html="information" />
-            </div>
+            <div v-html="$t('informations')" class="content" />
           </div>
         </div>
       </div>
@@ -171,6 +169,10 @@ export default {
   #section-informations {
     @include background-image-opacity;
     background-image: url('/images/information.svg');
+
+    .content {
+      text-align: justify;
+    }
   }
 
   #section-history {

@@ -62,11 +62,25 @@ export default {
   mainPicture: {
     alt: 'Photo de moi sur le pont de Brooklyn à New York'
   },
-  informations: [
-    'Raphaël TISON (@Airthee)',
-    '23 ans',
-    'Vendée, France'
-  ],
+  informations: `
+    <p>
+      Je m'appel <b>Raphaël TISON (@Airthee)</b>, j'ai <b>23 ans</b> et je vis en Vendée, en France.<br/>
+      Depuis très jeune, je suis <b>passioné par l'informatique</b>, plus particulièrement par le <b>développement</b>.
+    <p>
+      En dehors de mon parcours scolaire très spécialisé dans ce domaine, j'aime me former par moi-même
+      sur les <b>nouvelles technologies</b> et les <b>nouveaux langages</b>. En plus d'être <b>passionné et autodicacte</b>, je suis
+      aussi très <b>curieux</b>. En effet, je m'intéresse beaucoup aux nouveautés du milieu, sans hésiter à <b>approfondir</b> le sujet
+      si celui-ci m'intéresse.
+    <p>
+    <p>
+      Côté professionnel, je sais <b>m'intégrer</b> à une équipe existante et suis <b>force de proposition</b> si besoin.
+    </p>
+    <p>
+      En dehors de l'informatique, j'ai aussi d'autres passions, telles que les sorties à <b>moto</b> avec mes amis.
+      J'aime aussi me détendre devant des <b>séries</b>, parmi mes préférées nous pouvons retrouver <i>Breaking Bad</i>,
+      <i>Mr Robot</i> ou encore <i>La Casa de Papel</i>. Enfin, je pratique aussi la <b>boxe Thaïlandaise (Muay Thaï)</b> depuis quelques années.
+    </p>
+  `,
   timeline: [
     {
       title: 'EPSI (Nantes, 44200, France)',
