@@ -159,7 +159,7 @@ export default {
       display: table;
       margin: auto;
       margin-bottom: 1rem;
-      width: 80%;
+      width: 70vmin;
       height: auto;
 
       img {
