@@ -64,7 +64,7 @@ export default {
   },
   informations: `
     <p>
-      Je m'appel <b>Raphaël TISON (@Airthee)</b>, j'ai <b>23 ans</b> et je vis en Vendée, en France.<br/>
+      Je m'appelle <b>Raphaël TISON (@Airthee)</b>, j'ai <b>23 ans</b> et je vis en Vendée, en France.<br/>
       Depuis très jeune, je suis <b>passioné par l'informatique</b>, plus particulièrement par le <b>développement</b>.
     <p>
       En dehors de mon parcours scolaire très spécialisé dans ce domaine, j'aime me former par moi-même
