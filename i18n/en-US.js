@@ -78,7 +78,7 @@ export default {
     </p>
     <p>
       Apart from computers, I also have other passions, such as <b>motorcycle rides</b> with my friends.
-      I also like to relax in from of <b>series</b>, among my favorites we can find <i>Breaking Bad</i>,
+      I also like to relax in front of <b>series</b>, among my favorites we can find <i>Breaking Bad</i>,
       <i>Mr Robot</i> or <i>La Casa de Papel</i>. Finally, I also practice <b>Thai boxing (Muay Thai)</b> since a fiew years.
     </p>
 `,
