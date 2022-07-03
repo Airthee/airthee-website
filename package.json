@@ -31,15 +31,15 @@
     "timeline-vuejs": "^1.0.11"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.18.2",
     "@nuxtjs/dotenv": "^1.4.1",
-    "@nuxtjs/eslint-config": "^1.0.1",
-    "@nuxtjs/eslint-module": "^1.0.0",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^6.1.0",
-    "eslint-plugin-nuxt": ">=0.4.2",
+    "@nuxtjs/eslint-config": "^10.0.0",
+    "@nuxtjs/eslint-module": "^3.1.0",
+    "eslint": "^8.19.0",
+    "eslint-plugin-nuxt": "^3.2.0",
     "eslint-webpack-plugin": "^3.2.0",
-    "husky": "^2.6.0",
-    "lint-staged": "^3.5.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
     "sass": "^1.53.0",
     "sass-loader": "10",
     "scss": "^0.2.4"
