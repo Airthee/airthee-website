@@ -64,7 +64,7 @@ export default {
   },
   informations: `
     <p>
-      My name is <b>Raphaël TISON (@Airthee)</b>, I'm <b>23 years old</b> and I live in Vendée, France.<br/>
+      My name is <b>Raphaël TISON (@Airthee)</b>, I'm <b>26 years old</b> and I live in Loire Atlantique, France.<br/>
       Since very young, I'm <b>passionate about computers</b>, more specifically <b>software development</b>.
     <p>
       Apart from my very specialized academic background in this field, I like to train myself on <b>new technologies</b> 
@@ -79,7 +79,8 @@ export default {
     <p>
       Apart from computers, I also have other passions, such as <b>motorcycle rides</b> with my friends.
       I also like to relax in front of <b>series</b>, among my favorites we can find <i>Breaking Bad</i>,
-      <i>Mr Robot</i> or <i>La Casa de Papel</i>. Finally, I also practice <b>Thai boxing (Muay Thai)</b> since a fiew years.
+      <i>Mr Robot</i>, <i>La Casa de Papel</i> and lastly <i>Better Call Saul</i>.
+      Finally, I'm rather sporty and I like to practice different sports, according to my wishes : <b>Thai boxing (Muay Thai)</b>, <b>Krav Maga</b>, <b>fitness / strength training<b/>.
     </p>
 `,
   timeline: [

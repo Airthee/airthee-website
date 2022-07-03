@@ -64,7 +64,7 @@ export default {
   },
   informations: `
     <p>
-      Je m'appelle <b>Raphaël TISON (@Airthee)</b>, j'ai <b>23 ans</b> et je vis en Vendée, en France.<br/>
+      Je m'appelle <b>Raphaël TISON (@Airthee)</b>, j'ai <b>26 ans</b> et je vis en Loire Atlantique, en France.<br/>
       Depuis très jeune, je suis <b>passioné par l'informatique</b>, plus particulièrement par le <b>développement</b>.
     <p>
       En dehors de mon parcours scolaire très spécialisé dans ce domaine, j'aime me former par moi-même
@@ -78,7 +78,8 @@ export default {
     <p>
       En dehors de l'informatique, j'ai aussi d'autres passions, telles que les sorties à <b>moto</b> avec mes amis.
       J'aime aussi me détendre devant des <b>séries</b>, parmi mes préférées nous pouvons retrouver <i>Breaking Bad</i>,
-      <i>Mr Robot</i> ou encore <i>La Casa de Papel</i>. Enfin, je pratique aussi la <b>boxe Thaïlandaise (Muay Thaï)</b> depuis quelques années.
+      <i>Mr Robot</i>, <i>La Casa de Papel</i> et dernièrement <i>Better Call Saul</i>.
+      Enfin, je suis plutôt sportif et j'aime praiquer différents sports, selon mes envies : <b>boxe Thaïlandaise (Muay Thaï)</b>, <b>Krav Maga</b>, <b>fitness / musculation<b/>.
     </p>
   `,
   timeline: [
