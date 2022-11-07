@@ -1,56 +1,60 @@
 export default {
   skills: [
     {
-      name: 'NodeJS',
-      value: 70
+      name: "NodeJS",
+      value: 90,
     },
     {
-      name: 'PHP',
-      value: 90
+      name: "VueJS",
+      value: 80,
     },
     {
-      name: 'Symfony',
-      value: 70
+      name: "HTML / CSS",
+      value: 80,
     },
     {
-      name: 'GraphQL',
-      value: '40'
+      name: "MongoDB",
+      value: 50,
     },
     {
-      name: 'Laravel',
-      value: 60
+      name: "PHP",
+      value: 90,
     },
     {
-      name: 'VueJS',
-      value: 60
+      name: "Symfony",
+      value: 70,
     },
     {
-      name: 'jQuery',
-      value: 80
+      name: "GraphQL",
+      value: 40,
     },
     {
-      name: 'SQL',
-      value: 70
+      name: "Laravel",
+      value: 60,
     },
     {
-      name: 'Python',
-      value: 50
+      name: "jQuery",
+      value: 80,
     },
     {
-      name: 'Git',
-      value: 90
+      name: "SQL",
+      value: 70,
     },
     {
-      name: 'Java',
-      value: 30
+      name: "Python",
+      value: 50,
     },
     {
-      name: 'C / C++',
-      value: 50
+      name: "Git",
+      value: 90,
     },
     {
-      name: 'HTML / CSS',
-      value: 80
-    }
-  ]
-}
+      name: "Java",
+      value: 30,
+    },
+    {
+      name: "C / C++",
+      value: 50,
+    },
+  ],
+};
