@@ -5,22 +5,15 @@
   </div>
 </template>
 
-<style lang="scss">
-  @charset "utf-8";
-  @import "@/assets/css/variables";
-  @import "@/node_modules/bulma/bulma.sass";
-
-  body {
-    overflow-x: hidden;
-  }
-</style>
-
 <script>
 import Footer from '@/components/Footer'
 
 export default {
+  components: {
+    Footer
+  },
   head () {
-    const i18nSeo = this.$nuxtI18nSeo()
+    const i18nSeo = this.$nuxtI18nHead({ addSeoAttributes: true })
     const metaDescription = this.$t('app.meta.description')
 
     return {
@@ -41,9 +34,16 @@ export default {
         ...i18nSeo.link
       ]
     }
-  },
-  components: {
-    Footer
   }
 }
 </script>
+
+<style lang="scss">
+@charset "utf-8";
+@import "@/assets/css/variables";
+@import "@/node_modules/bulma/bulma.sass";
+
+body {
+  overflow-x: hidden;
+}
+</style>
