@@ -41,7 +41,7 @@ export default {
 <style lang="scss">
 @charset "utf-8";
 @import "@/assets/css/variables";
-@import "@/node_modules/bulma/bulma.sass";
+@import "@/node_modules/bulma/css/bulma.min.css";
 
 body {
   overflow-x: hidden;
