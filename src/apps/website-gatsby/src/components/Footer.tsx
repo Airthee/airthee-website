@@ -20,10 +20,10 @@ function FooterIcon(props: {
 
 export function Footer() {
   return (
-    <footer className="bg-dark text-white py-8 px-4">
-      <div className="flex flex-row space-between">
+    <footer className="bg-dark text-white py-14 px-4 md:px-[15vw] flex flex-col space-y-8">
+      <div className="flex flex-row justify-between items-center">
         <div className="flex flex-col">
-          <span className="font-semibold">Mes réseaux sociaux</span>
+          <span className="font-semibold mb-2">Mes réseaux sociaux</span>
           <div className="flex flex-row space-x-2">
             <FooterIcon
               link="https://linkedin.com/in/raphael-tison"
@@ -37,6 +37,10 @@ export function Footer() {
             />
           </div>
         </div>
+        <div data-tf-live="01J88EJK1988JXW53KBDYWN89C"></div>
+      </div>
+      <div className="text-center">
+        Copyright © 2024 Raphaël TISON (@Airthee)
       </div>
     </footer>
   );

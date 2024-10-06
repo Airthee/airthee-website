@@ -121,6 +121,7 @@ export function Head() {
   return (
     <>
       <title>Airthee - Welcome to my world</title>
+      <script src="https://embed.typeform.com/next/embed.js"></script>
     </>
   );
 }
