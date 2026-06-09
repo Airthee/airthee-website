@@ -1,12 +1,11 @@
 import { StaticImage } from "gatsby-plugin-image";
 import * as React from "react";
-import { citations } from "../data";
+import { citations, presentation, skills } from "../data";
 import { RotatingCitation } from "../components/RotatingCitations";
-import { presentation } from "../data/presentation";
 
-function Section(props: React.PropsWithChildren & {className: string, title?: string}) {
+function Section(props: React.PropsWithChildren & {className?: string, title?: string}) {
   return (
-    <section className={`pt-8 px-4 ${props.className}`}>
+    <section className={`py-8 px-4 ${props.className}`}>
       {props.title && (
         <div className="pb-6">
           <h1 className="text-4xl font-bold">{props.title}</h1>
@@ -18,10 +17,29 @@ function Section(props: React.PropsWithChildren & {className: string, title?: st
   )
 }
 
+function SkillsSection() {
+  return (
+    <Section title="Compétences">
+      <div className="flex flex-col space-y-4">
+        {skills.map((skill, skillIndex) => (
+          <div key={skillIndex}>
+            <h2 className="text-2xl font-medium mb-2">{skill.name}</h2>
+            <div className="flex flex-col space-y-2">
+              {skill.description.map((skillDescription, descriptionIndex) => (
+                <p key={descriptionIndex}>{skillDescription}</p>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </Section>
+  )
+}
+
 function PresentationSection() {
   return (
-    <Section title="Qui suis-je ?" className="bg-primary-lighten">
-      <p className="text-justify">
+    <Section title="Qui suis-je ?">
+      <p>
         {presentation}
       </p>
     </Section>
@@ -50,7 +68,10 @@ export default function IndexPage() {
   return (
     <main>
       <HeroSection />
-      <PresentationSection />
+      <div className="bg-primary-lighten text-justify">
+        <PresentationSection />
+        <SkillsSection />
+      </div>
     </main>
   );
 }
