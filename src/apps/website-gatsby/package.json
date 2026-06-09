@@ -35,5 +35,12 @@
     "gatsby-source-filesystem": "^5.13.1",
     "gatsby-transformer-sharp": "^5.13.1",
     "typescript": "^5.3.3"
-  }
+  },
+  "trustedDependencies": [
+    "@parcel/watcher",
+    "core-js",
+    "core-js-pure",
+    "es5-ext",
+    "gatsby-cli"
+  ]
 }

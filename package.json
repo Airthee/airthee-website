@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "pnpm --filter website-gatsby develop",
+    "dev": "bun --filter website-gatsby develop",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
