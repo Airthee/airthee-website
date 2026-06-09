@@ -15,7 +15,7 @@ export function RotatingCitation(props: {citations: CitationProps[], period: num
     });
   
     return (
-      <div className="bg-white p-4 w-full">
+      <div className="bg-white p-4">
         <blockquote>
           <p>{currentCitation.message}</p>
         </blockquote>
